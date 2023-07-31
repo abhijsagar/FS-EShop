@@ -1,3 +1,4 @@
+@root-backup
 .env/
 admin/node_modules/
 admin/package-lock.json/

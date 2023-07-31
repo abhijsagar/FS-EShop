@@ -78,82 +78,14 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {stripeApikey && (
-        <Elements stripe={loadStripe(stripeApikey)}>
-          <Routes>
-            <Route
-              path="/payment"
-              element={
-                <ProtectedRoute>
-                  <PaymentPage />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </Elements>
-      )}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/sign-up" element={<SignupPage />} />
-        <Route
-          path="/activation/:activation_token"
-          element={<ActivationPage />}
-        />
+        <Route path="/" element={<ShopLoginPage />} />
+        <Route path="/shop-create" element={<ShopCreatePage />} />
         <Route
           path="/seller/activation/:activation_token"
           element={<SellerActivationPage />}
         />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/product/:id" element={<ProductDetailsPage />} />
-        <Route path="/best-selling" element={<BestSellingPage />} />
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route
-          path="/checkout"
-          element={
-            <ProtectedRoute>
-              <CheckoutPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/order/success" element={<OrderSuccessPage />} />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/inbox"
-          element={
-            <ProtectedRoute>
-              <UserInbox />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/user/order/:id"
-          element={
-            <ProtectedRoute>
-              <OrderDetailsPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/user/track/order/:id"
-          element={
-            <ProtectedRoute>
-              <TrackOrderPage />
-            </ProtectedRoute>
-          }
-        />
         <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
-        {/* shop Routes */}
-        <Route path="/shop-create" element={<ShopCreatePage />} />
-        <Route path="/shop-login" element={<ShopLoginPage />} />
         <Route
           path="/shop/:id"
           element={
