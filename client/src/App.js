@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, ScrollRestoration, Outlet, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Route, ScrollRestoration, Outlet, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import {
     ActivationPage,
     FAQPage,
@@ -20,9 +20,6 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import { loadUserAsync } from './redux/slices/userSlice';
 import { getAllProductsAsync } from './redux/slices/productSlice';
 import { getAllEventsAsync } from './redux/slices/eventSlice';
-import { server } from './server';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import SignIn from './pages/Account/SignIn';
 import SignUp from './pages/Account/SignUp';
 import HeaderBottom from './components/home/Header/HeaderBottom';
@@ -68,12 +65,20 @@ const router = createBrowserRouter(
                 <Route path='/about' element={<About />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/cart' element={<Cart />} />
-                <Route path='/payment-new' element={<Payment />} />
+                {/* <Route path='/payment-new' element={<Payment />} /> */}
                 <Route
                     path='/checkout'
                     element={
                         <ProtectedRoute>
                             <CheckoutPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path='/payment'
+                    element={
+                        <ProtectedRoute>
+                            <PaymentPage />
                         </ProtectedRoute>
                     }
                 />
@@ -116,49 +121,26 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-    const [stripeApikey, setStripeApiKey] = useState('');
-
-    async function getStripeApikey() {
-        const { data } = await axios.get(`${server}/payment/stripeapikey`);
-        setStripeApiKey(data.stripeApikey);
-    }
     useEffect(() => {
         store.dispatch(loadUserAsync());
         store.dispatch(getAllProductsAsync());
         store.dispatch(getAllEventsAsync());
-        getStripeApikey();
     }, []);
 
     return (
         <div className='font-bodyFont'>
-            <BrowserRouter>
-                {stripeApikey && (
-                    <Elements stripe={loadStripe(stripeApikey)}>
-                        <Routes>
-                            <Route
-                                path='/payment'
-                                element={
-                                    <ProtectedRoute>
-                                        <PaymentPage />
-                                    </ProtectedRoute>
-                                }
-                            />
-                        </Routes>
-                    </Elements>
-                )}
-                <ToastContainer
-                    position='bottom-center'
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme='dark'
-                />
-            </BrowserRouter>
+            <ToastContainer
+                position='bottom-center'
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme='dark'
+            />
             <RouterProvider router={router} />
         </div>
     );

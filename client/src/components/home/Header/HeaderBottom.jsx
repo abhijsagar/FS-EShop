@@ -29,7 +29,7 @@ const SearchedProduct = ({ item, setSearchQuery }) => {
                 <p className='font-semibold text-lg'>{item.name}</p>
                 <p className='text-xs'>{item.description}</p>
                 <p className='text-sm'>
-                    Price: <span className='text-primeColor font-semibold'>${item.discountPrice}</span>
+                    Price: <span className='text-primeColor font-semibold'>&#8377; {item.discountPrice}</span>
                 </p>
             </div>
         </div>
@@ -74,8 +74,8 @@ const HeaderBottom = () => {
     return (
         <>
             <div className='w-full bg-[#F5F5F3] relative'>
-                <div className='max-w-container mx-auto'>
-                    <Flex className='flex flex-col lg:flex-row items-start lg:items-center justify-between w-full px-4 pb-4 lg:pb-0 h-full lg:h-24'>
+                <div className='max-w-container mx-6'>
+                    <Flex className='flex flex-col md:flex-row items-center md:gap-4 lg:items-center justify-between w-full px-4 py-4 h-full lg:h-24'>
                         <div onClick={() => setShow(!show)} ref={ref} className='flex h-14 cursor-pointer items-center gap-2 text-primeColor'>
                             <HiOutlineMenuAlt4 className='w-5 h-5' />
                             <p className='text-[14px] font-normal'>Shop by Category</p>
@@ -118,7 +118,7 @@ const HeaderBottom = () => {
                                 </div>
                             )}
                         </div>
-                        <div className='flex gap-4 mt-2 lg:mt-0 items-center pr-6 cursor-pointer relative'>
+                        <div className='flex gap-4 mt-4 mb-2 lg:mt-0 items-center pr-6 cursor-pointer relative'>
                             <div onClick={() => setShowUser(!showUser)} className='flex'>
                                 <FaUser />
                                 <FaCaretDown />
@@ -149,6 +149,12 @@ const HeaderBottom = () => {
                                                     Profile
                                                 </li>
                                             </Link>
+                                            <Link onClick={() => setShowUser(false)} to='/inbox'>
+                                                <li className='text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer'>
+                                                    Inbox
+                                                </li>
+                                            </Link>
+
                                             <li
                                                 onClick={logoutHandler}
                                                 className='text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer'>

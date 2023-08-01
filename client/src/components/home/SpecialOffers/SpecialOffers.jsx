@@ -11,7 +11,7 @@ const SpecialOffers = () => {
     useEffect(() => {
         const allProductsData = allProducts ? [...allProducts] : [];
         const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
-        const firstFive = sortedData && sortedData.slice(0, 5);
+        const firstFive = sortedData && sortedData.slice(0, 8);
         setData(firstFive);
     }, [allProducts]);
     return (

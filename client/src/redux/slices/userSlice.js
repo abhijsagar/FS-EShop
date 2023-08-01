@@ -81,16 +81,16 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         loadUser: (state, payload) => {
-            state.user = payload;
+            state.user = payload.user;
             state.loading = false;
             state.isAuthenticated = payload ? true : false;
         },
         updateUserInformation: (state, payload) => {
-            state.user = payload;
+            state.user = payload.user;
             state.loading = false;
         },
         updatUserAddress: (state, payload) => {
-            state.user = payload;
+            state.user = payload.user;
             state.loading = false;
             state.isAuthenticated = payload ? true : false;
         },
@@ -105,7 +105,7 @@ export const userSlice = createSlice({
             state.loading = true;
         },
         [loadUserAsync.fulfilled.type]: (state, { payload }) => {
-            state.user = payload;
+            state.user = payload.user;
             state.loading = false;
             state.isAuthenticated = payload ? true : false;
         },
@@ -118,7 +118,7 @@ export const userSlice = createSlice({
             state.loading = true;
         },
         [updateUserInformationAsync.fulfilled.type]: (state, { payload }) => {
-            state.user = payload;
+            state.user = payload.user;
             state.loading = false;
         },
         [updateUserInformationAsync.rejected.type]: (state, { payload }) => {

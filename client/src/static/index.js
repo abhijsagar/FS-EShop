@@ -34,11 +34,6 @@ export const navBarList = [
     },
     {
         _id: 1007,
-        title: 'Journal',
-        link: '/journal',
-    },
-    {
-        _id: 1007,
         title: 'FAQ',
         link: '/faq',
     },

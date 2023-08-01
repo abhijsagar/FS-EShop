@@ -25,9 +25,11 @@ const ProductDetailsPage = () => {
     }, [allProducts, allEvents]);
 
     return (
-        <div>
-            <ProductDetails data={data} />
-            {!eventData && <>{data && <SuggestedProduct data={data} />}</>}
+        <div className='w-full mt-8 mx-auto border-b-[1px] border-b-gray-300'>
+            <div className='max-w-container mx-auto px-4'>
+                <ProductDetails data={data} showDesc={true} />
+                {!eventData && <>{data && <SuggestedProduct data={data} />}</>}
+            </div>
         </div>
     );
 };

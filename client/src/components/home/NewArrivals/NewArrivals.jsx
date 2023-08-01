@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import Heading from '../Products/Heading';
 import Product from '../Products/Product';
-import { newArrOne, newArrTwo, newArrThree, newArrFour } from '../../../assets/images/index';
 import SampleNextArrow from './SampleNextArrow';
 import SamplePrevArrow from './SamplePrevArrow';
 
@@ -14,7 +13,7 @@ const NewArrivals = () => {
     useEffect(() => {
         const allProductsData = allProducts ? [...allProducts] : [];
         const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
-        const firstFive = sortedData && sortedData.slice(0, 5);
+        const firstFive = sortedData && sortedData.slice(0, 6);
         setData(firstFive);
     }, [allProducts]);
     const settings = {
@@ -55,14 +54,6 @@ const NewArrivals = () => {
         <div className='w-full pb-16'>
             <Heading heading='New Arrivals' />
             <Slider {...settings}>
-                {data &&
-                    data.map((i, index) => (
-                        <>
-                            <div className='px-2'>
-                                <Product data={i} key={index} />
-                            </div>
-                        </>
-                    ))}
                 {data &&
                     data.map((i, index) => (
                         <>

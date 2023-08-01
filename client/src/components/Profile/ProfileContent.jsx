@@ -25,7 +25,7 @@ const ProfileContent = ({ active }) => {
     const [email, setEmail] = useState(user && user.email);
     const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
     const [password, setPassword] = useState('');
-    const [avatar, setAvatar] = useState(null);
+    const [, setAvatar] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -138,7 +138,9 @@ const ProfileContent = ({ active }) => {
                                 </div>
                             </div>
                             <input
-                                className={`w-[250px] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
+                                className={
+                                    'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                                }
                                 required
                                 value='Update'
                                 type='submit'
@@ -258,6 +260,7 @@ const AllOrders = () => {
 
     return (
         <div className='pl-8 pt-1'>
+            <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>Orders</h2>
             <DataGrid rows={row} columns={columns} pageSize={10} disableSelectionOnClick autoHeight />
         </div>
     );
@@ -337,6 +340,7 @@ const AllRefundOrders = () => {
 
     return (
         <div className='pl-8 pt-1'>
+            <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>Refunded Orders</h2>
             <DataGrid rows={row} columns={columns} pageSize={10} autoHeight disableSelectionOnClick />
         </div>
     );
@@ -414,6 +418,7 @@ const TrackOrder = () => {
 
     return (
         <div className='pl-8 pt-1'>
+            <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>Track Orders</h2>
             <DataGrid rows={row} columns={columns} pageSize={10} disableSelectionOnClick autoHeight />
         </div>
     );
@@ -441,7 +446,7 @@ const ChangePassword = () => {
     };
     return (
         <div className='w-full px-5'>
-            <h1 className='block text-[25px] text-center font-[600] text-[#000000ba] pb-2'>Change Password</h1>
+            <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>Change Passowrd</h2>
             <div className='w-full'>
                 <form aria-required onSubmit={passwordChangeHandler} className='flex flex-col items-center'>
                     <div className=' w-[100%] 800px:w-[50%] mt-5'>
@@ -474,7 +479,9 @@ const ChangePassword = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                         <input
-                            className={`w-[95%] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
+                            className={
+                                'flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                            }
                             required
                             value='Update'
                             type='submit'
@@ -645,9 +652,13 @@ const Address = () => {
                 </div>
             )}
             <div className='flex w-full items-center justify-between'>
-                <h1 className='text-[25px] font-[600] text-[#000000ba] pb-2'>My Addresses</h1>
-                <div className={`${styles.button} !rounded-md`} onClick={() => setOpen(true)}>
-                    <span className='text-[#fff]'>Add New</span>
+                <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>My Addresses</h2>
+                <div
+                    className={
+                        'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                    }
+                    onClick={() => setOpen(true)}>
+                    Add New
                 </div>
             </div>
             <br />

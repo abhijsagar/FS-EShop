@@ -15,7 +15,7 @@ const Cart = () => {
     useEffect(() => {
         let price = 0;
         cart?.map((item) => {
-            price += item.price * item.quantity;
+            price += item.discountPrice * item.qty;
             return price;
         });
         setTotalAmt(price);
@@ -30,14 +30,14 @@ const Cart = () => {
         }
     }, [totalAmt]);
     return (
-        <div className='max-w-container mx-auto px-4'>
+        <div className='max-w-container mx-6 px-4'>
             <Breadcrumbs title='Cart' />
             {cart.length > 0 ? (
                 <div className='pb-20'>
                     <div className='w-full h-20 bg-[#F5F7F7] text-primeColor hidden lgl:grid grid-cols-5 place-content-center px-6 text-lg font-titleFont font-semibold'>
                         <h2 className='col-span-2'>Product</h2>
                         <h2>Price</h2>
-                        <h2>Quantity</h2>
+                        <h2>qty</h2>
                         <h2>Sub Total</h2>
                     </div>
                     <div className='mt-5'>
@@ -71,19 +71,19 @@ const Cart = () => {
                             <div>
                                 <p className='flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium'>
                                     Subtotal
-                                    <span className='font-semibold tracking-wide font-titleFont'>${totalAmt}</span>
+                                    <span className='font-semibold tracking-wide font-titleFont'>&#8377; {totalAmt}</span>
                                 </p>
                                 <p className='flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium'>
                                     Shipping Charge
-                                    <span className='font-semibold tracking-wide font-titleFont'>${shippingCharge}</span>
+                                    <span className='font-semibold tracking-wide font-titleFont'>&#8377; {shippingCharge}</span>
                                 </p>
                                 <p className='flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium'>
                                     Total
-                                    <span className='font-bold tracking-wide text-lg font-titleFont'>${totalAmt + shippingCharge}</span>
+                                    <span className='font-bold tracking-wide text-lg font-titleFont'>&#8377; {totalAmt + shippingCharge}</span>
                                 </p>
                             </div>
                             <div className='flex justify-end'>
-                                <Link to='/payment'>
+                                <Link to='/checkout'>
                                     <button className='w-52 h-10 bg-primeColor text-white hover:bg-black duration-300'>Proceed to Checkout</button>
                                 </Link>
                             </div>

@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import CheckoutSteps from '../components/Checkout/CheckoutSteps';
 import Payment from '../components/Payment/Payment';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
+import { server } from '../server';
+import Breadcrumbs from '../components/Layout/Breadcrumbs';
 
 const PaymentPage = () => {
+    const [stripeApikey, setStripeApiKey] = useState('');
+
+    async function getStripeApikey() {
+        const { data } = await axios.get(`${server}/payment/stripeapikey`);
+        setStripeApiKey(data.stripeApikey);
+    }
+
+    useEffect(() => {
+        getStripeApikey();
+    }, []);
+
     return (
-        <div className='w-full min-h-screen bg-[#f6f9fc]'>
-            <CheckoutSteps active={2} />
-            <Payment />
-        </div>
+        <Elements stripe={loadStripe(stripeApikey)}>
+            <div className='max-w-container mx-6 px-4'>
+                <Breadcrumbs title='Continue Payment' />
+                <div className=''>
+                    <CheckoutSteps active={2} />
+                    <Payment />
+                </div>
+            </div>
+        </Elements>
     );
 };
 
-export default PaymentPage
+export default PaymentPage;

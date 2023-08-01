@@ -95,11 +95,15 @@ const UserOrderDetails = () => {
                             <div className='w-full'>
                                 <h5 className='pl-3 text-[20px]'>{item.name}</h5>
                                 <h5 className='pl-3 text-[20px] text-[#00000091]'>
-                                    US${item.discountPrice} x {item.qty}
+                                    &#8377; {item.discountPrice} x {item.qty}
                                 </h5>
                             </div>
                             {!item.isReviewed && data?.status === 'Delivered' ? (
-                                <div className={`${styles.button} text-[#fff]`} onClick={() => setOpen(true) || setSelectedItem(item)}>
+                                <div
+                                    className={
+                                        'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                                    }
+                                    onClick={() => setOpen(true) || setSelectedItem(item)}>
                                     Write a review
                                 </div>
                             ) : null}
@@ -121,7 +125,7 @@ const UserOrderDetails = () => {
                             <div>
                                 <div className='pl-3 text-[20px]'>{selectedItem?.name}</div>
                                 <h4 className='pl-3 text-[20px]'>
-                                    US${selectedItem?.discountPrice} x {selectedItem?.qty}
+                                    &#8377; {selectedItem?.discountPrice} x {selectedItem?.qty}
                                 </h4>
                             </div>
                         </div>
@@ -158,7 +162,11 @@ const UserOrderDetails = () => {
                                 placeholder='How was your product? write your expresion about it!'
                                 className='mt-2 w-[95%] border p-2 outline-none'></textarea>
                         </div>
-                        <div className={`${styles.button} text-white text-[20px] ml-3`} onClick={rating > 1 ? reviewHandler : null}>
+                        <div
+                            className={
+                                'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                            }
+                            onClick={rating > 1 ? reviewHandler : null}>
                             Submit
                         </div>
                     </div>
@@ -167,7 +175,7 @@ const UserOrderDetails = () => {
 
             <div className='border-t w-full text-right'>
                 <h5 className='pt-3 text-[18px]'>
-                    Total Price: <strong>US${data?.totalPrice}</strong>
+                    Total Price: <strong>&#8377; {data?.totalPrice}</strong>
                 </h5>
             </div>
             <br />
@@ -185,7 +193,11 @@ const UserOrderDetails = () => {
                     <h4>Status: {data?.paymentInfo?.status ? data?.paymentInfo?.status : 'Not Paid'}</h4>
                     <br />
                     {data?.status === 'Delivered' && (
-                        <div className={`${styles.button} text-white`} onClick={refundHandler}>
+                        <div
+                            className={
+                                'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                            }
+                            onClick={refundHandler}>
                             Give a Refund
                         </div>
                     )}
@@ -193,7 +205,12 @@ const UserOrderDetails = () => {
             </div>
             <br />
             <Link to='/'>
-                <div className={`${styles.button} text-white`}>Send Message</div>
+                <div
+                    className={
+                        'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                    }>
+                    Send Message
+                </div>
             </Link>
             <br />
             <br />

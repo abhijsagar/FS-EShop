@@ -34,8 +34,8 @@ const OfferCard = ({ active, data }) => {
                 <p>{data?.description}</p>
                 <div className='flex py-2 justify-between'>
                     <div className='flex'>
-                        <h5 className='font-[500] text-[18px] text-[#d55b45] pr-3 line-through'>{data?.originalPrice}$</h5>
-                        <h5 className='font-bold text-[20px] text-[#333] font-Roboto'>{data?.discountPrice}$</h5>
+                        <h5 className='font-[500] text-[18px] text-[#d55b45] pr-3 line-through'>&#8377; {data?.originalPrice}</h5>
+                        <h5 className='font-bold text-[20px] text-[#333] font-Roboto'>&#8377; {data?.discountPrice}</h5>
                     </div>
                     <span className='pr-3 font-[400] text-[17px] text-[#44a55e]'>{data?.sold_out} sold</span>
                 </div>
@@ -43,9 +43,18 @@ const OfferCard = ({ active, data }) => {
                 <br />
                 <div className='flex items-center'>
                     <Link to={`/shop/${data?._id}?isEvent=true`}>
-                        <div className={`${styles.button} text-[#fff]`}>See Details</div>
+                        <div
+                            className={
+                                'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                            }>
+                            See Details
+                        </div>
                     </Link>
-                    <div className={`${styles.button} text-[#fff] ml-5`} onClick={() => addToCartHandler(data)}>
+                    <div
+                        className={
+                            'my-2 flex justify-center items-center bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'
+                        }
+                        onClick={() => addToCartHandler(data)}>
                         Add to cart
                     </div>
                 </div>

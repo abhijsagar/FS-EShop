@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { BsCheckCircleFill } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
-import { logoLight } from '../../assets/images';
 import { useSelector } from 'react-redux';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import styles from '../../styles/styles';
 import { RxAvatar } from 'react-icons/rx';
 import axios from 'axios';
 import { server } from '../../server';
@@ -95,7 +92,7 @@ const SignUp = () => {
     }, []);
 
     return (
-        <div className='w-full h-screen flex items-center justify-start'>
+        <div className='w-full flex items-center justify-start'>
             <div className='w-full lgl:w-[500px] h-full flex flex-col justify-center'>
                 {successMsg ? (
                     <div className='w-[500px]'>
@@ -107,8 +104,8 @@ const SignUp = () => {
                         </Link>
                     </div>
                 ) : (
-                    <form className='w-full lgl:w-[500px] h-screen flex items-center justify-center' onSubmit={handleSubmit}>
-                        <div className='px-6 py-4 w-full h-[96%] flex flex-col justify-start overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor'>
+                    <form className='w-full lgl:w-[500px] h-[500px] flex items-center justify-center' onSubmit={handleSubmit}>
+                        <div className='px-6 py-4 w-full flex flex-col justify-start overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor'>
                             <h1 className='font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4'>
                                 Create your account
                             </h1>
@@ -118,7 +115,7 @@ const SignUp = () => {
                                     <input
                                         onChange={handleName}
                                         value={name}
-                                        className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                                        className='w-full h-10 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
                                         type='text'
                                         placeholder='eg. John Doe'
                                     />
@@ -134,7 +131,7 @@ const SignUp = () => {
                                     <input
                                         onChange={handleEmail}
                                         value={email}
-                                        className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                                        className='w-full h-10 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
                                         type='email'
                                         placeholder='john@workemail.com'
                                     />
@@ -150,7 +147,7 @@ const SignUp = () => {
                                     <input
                                         onChange={handlePassword}
                                         value={password}
-                                        className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                                        className='w-full h-10 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
                                         type={visible ? 'text' : 'password'}
                                         placeholder='Create password'
                                     />

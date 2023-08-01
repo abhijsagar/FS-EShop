@@ -1,13 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from 'react-redux';
 import socketIO from 'socket.io-client';
-import { format } from 'timeago.js';
 import { server } from '../server';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { AiOutlineArrowRight, AiOutlineSend } from 'react-icons/ai';
-import { TfiGallery } from 'react-icons/tfi';
-import styles from '../styles/styles';
 
 const ENDPOINT = 'https://socket-ecommerce-tu68.onrender.com/';
 const socketId = socketIO(ENDPOINT, { transports: ['websocket'] });
@@ -22,7 +18,7 @@ const UserInbox = () => {
     const [userData, setUserData] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
     const [, setImages] = useState();
-    const [activeStatus, setActiveStatus] = useState(false);
+    const [, setActiveStatus] = useState(false);
     const [open, setOpen] = useState(false);
     const scrollRef = useRef(null);
 
@@ -190,8 +186,8 @@ const UserInbox = () => {
     return (
         <div className='w-full'>
             {!open && (
-                <>
-                    <h1 className='text-center text-[30px] py-3 font-Poppins'>All Messages</h1>
+                <div className='max-w-container my-8 mx-6'>
+                    <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>All Messages</h2>
                     {/* All messages list */}
                     {conversations &&
                         conversations.map((item, index) => (
@@ -209,213 +205,55 @@ const UserInbox = () => {
                                 loading={loading}
                             />
                         ))}
-                </>
-            )}
-
-            {open && (
-                <SellerInbox
-                    setOpen={setOpen}
-                    newMessage={newMessage}
-                    setNewMessage={setNewMessage}
-                    sendMessageHandler={sendMessageHandler}
-                    messages={messages}
-                    sellerId={user._id}
-                    userData={userData}
-                    activeStatus={activeStatus}
-                    scrollRef={scrollRef}
-                    handleImageUpload={handleImageUpload}
-                />
+                </div>
             )}
         </div>
     );
 };
 
-const MessageList = ({
-  data,
-  index,
-  setOpen,
-  setCurrentChat,
-  me,
-  setUserData,
-  userData,
-  online,
-  setActiveStatus,
-  loading
-}) => {
-  const [active, setActive] = useState(0);
-  const [user, setUser] = useState([]);
-  const navigate = useNavigate();
-  const handleClick = (id) => {
-    navigate(`/inbox?${id}`);
-    setOpen(true);
-  };
-
-  useEffect(() => {
-    setActiveStatus(online);
-    const userId = data.members.find((user) => user !== me);
-    const getUser = async () => {
-      try {
-        const res = await axios.get(`${server}/shop/get-shop-info/${userId}`);
-        setUser(res.data.shop);
-      } catch (error) {
-        console.log(error);
-      }
+const MessageList = ({ data, index, setOpen, setCurrentChat, me, setUserData, userData, online, setActiveStatus, loading }) => {
+    const [active, setActive] = useState(0);
+    const [user, setUser] = useState([]);
+    const navigate = useNavigate();
+    const handleClick = (id) => {
+        navigate(`/inbox?${id}`);
+        setOpen(true);
     };
-    getUser();
-  }, [me, data]);
 
-  return (
-    <div
-      className={`w-full flex p-3 px-3 ${
-        active === index ? "bg-[#00000010]" : "bg-transparent"
-      }  cursor-pointer`}
-      onClick={(e) =>
-        setActive(index) ||
-        handleClick(data._id) ||
-        setCurrentChat(data) ||
-        setUserData(user) ||
-        setActiveStatus(online)
-      }
-    >
-      <div className="relative">
-        <img
-          src={`${user?.avatar?.url}`}
-          alt=""
-          className="w-[50px] h-[50px] rounded-full"
-        />
-        {online ? (
-          <div className="w-[12px] h-[12px] bg-green-400 rounded-full absolute top-[2px] right-[2px]" />
-        ) : (
-          <div className="w-[12px] h-[12px] bg-[#c7b9b9] rounded-full absolute top-[2px] right-[2px]" />
-        )}
-      </div>
-      <div className="pl-3">
-        <h1 className="text-[18px]">{user?.name}</h1>
-        <p className="text-[16px] text-[#000c]">
-          {!loading && data?.lastMessageId !== userData?._id
-            ? "You:"
-            : userData?.name.split(" ")[0] + ": "}{" "}
-          {data?.lastMessage}
-        </p>
-      </div>
-    </div>
-  );
-};
+    useEffect(() => {
+        setActiveStatus(online);
+        const userId = data.members.find((user) => user !== me);
+        const getUser = async () => {
+            try {
+                const res = await axios.get(`${server}/shop/get-shop-info/${userId}`);
+                setUser(res.data.shop);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getUser();
+    }, [me, data]);
 
-const SellerInbox = ({
-  setOpen,
-  newMessage,
-  setNewMessage,
-  sendMessageHandler,
-  messages,
-  sellerId,
-  userData,
-  activeStatus,
-  scrollRef,
-  handleImageUpload,
-}) => {
-  return (
-    <div className="w-[full] min-h-full flex flex-col justify-between p-5">
-      {/* message header */}
-      <div className="w-full flex p-3 items-center justify-between bg-slate-200">
-        <div className="flex">
-          <img
-            src={`${userData?.avatar?.url}`}
-            alt=""
-            className="w-[60px] h-[60px] rounded-full"
-          />
-          <div className="pl-3">
-            <h1 className="text-[18px] font-[600]">{userData?.name}</h1>
-            <h1>{activeStatus ? "Active Now" : ""}</h1>
-          </div>
-        </div>
-        <AiOutlineArrowRight
-          size={20}
-          className="cursor-pointer"
-          onClick={() => setOpen(false)}
-        />
-      </div>
-
-      {/* messages */}
-      <div className="px-3 h-[75vh] py-3 overflow-y-scroll">
-        {messages &&
-          messages.map((item, index) => (
-            <div
-              className={`flex w-full my-2 ${
-                item.sender === sellerId ? "justify-end" : "justify-start"
-              }`}
-              ref={scrollRef}
-            >
-              {item.sender !== sellerId && (
-                <img
-                  src={`${userData?.avatar?.url}`}
-                  className="w-[40px] h-[40px] rounded-full mr-3"
-                  alt=""
-                />
-              )}
-              {item.images && (
-                <img
-                  src={`${item.images?.url}`}
-                  className="w-[300px] h-[300px] object-cover rounded-[10px] ml-2 mb-2"
-                />
-              )}
-              {item.text !== "" && (
-                <div>
-                  <div
-                    className={`w-max p-2 rounded ${
-                      item.sender === sellerId ? "bg-[#000]" : "bg-[#38c776]"
-                    } text-[#fff] h-min`}
-                  >
-                    <p>{item.text}</p>
-                  </div>
-
-                  <p className="text-[12px] text-[#000000d3] pt-1">
-                    {format(item.createdAt)}
-                  </p>
-                </div>
-              )}
+    return (
+        <div
+            className={`w-full flex p-3 px-3 ${active === index ? 'bg-[#00000010]' : 'bg-transparent'}  cursor-pointer`}
+            onClick={(e) => setActive(index) || handleClick(data._id) || setCurrentChat(data) || setUserData(user) || setActiveStatus(online)}>
+            <div className='relative'>
+                <img src={`${user?.avatar?.url}`} alt='' className='w-[50px] h-[50px] rounded-full' />
+                {online ? (
+                    <div className='w-[12px] h-[12px] bg-green-400 rounded-full absolute top-[2px] right-[2px]' />
+                ) : (
+                    <div className='w-[12px] h-[12px] bg-[#c7b9b9] rounded-full absolute top-[2px] right-[2px]' />
+                )}
             </div>
-          ))}
-      </div>
-
-      {/* send message input */}
-      <form
-        aria-required={true}
-        className="p-3 relative w-full flex justify-between items-center"
-        onSubmit={sendMessageHandler}
-      >
-        <div className="w-[30px]">
-          <input
-            type="file"
-            name=""
-            id="image"
-            className="hidden"
-            onChange={handleImageUpload}
-          />
-          <label htmlFor="image">
-            <TfiGallery className="cursor-pointer" size={20} />
-          </label>
+            <div className='pl-3'>
+                <h1 className='text-[18px]'>{user?.name}</h1>
+                <p className='text-[16px] text-[#000c]'>
+                    {!loading && data?.lastMessageId !== userData?._id ? 'You:' : userData?.name.split(' ')[0] + ': '} {data?.lastMessage}
+                </p>
+            </div>
         </div>
-        <div className="w-full">
-          <input
-            type="text"
-            required
-            placeholder="Enter your message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            className={`${styles.input}`}
-          />
-          <input type="submit" value="Send" className="hidden" id="send" />
-          <label htmlFor="send">
-            <AiOutlineSend
-              size={20}
-              className="absolute right-4 top-5 cursor-pointer"
-            />
-          </label>
-        </div>
-      </form>
-    </div>
-  );
+    );
 };
 
 export default UserInbox;

@@ -17,7 +17,7 @@ const Header = () => {
     const location = useLocation();
     useEffect(() => {
         let ResponsiveMenu = () => {
-            if (window.innerWidth < 667) {
+            if (window.innerWidth < 960) {
                 setShowMenu(false);
             } else {
                 setShowMenu(true);
@@ -29,7 +29,7 @@ const Header = () => {
 
     return (
         <div className='w-full h-20 bg-white sticky top-0 z-20 border-b-[1px] border-b-gray-200'>
-            <nav className='h-full px-4 max-w-container mx-auto relative'>
+            <nav className='h-full px-4 max-w-container mx-6 relative'>
                 <Flex className='flex items-center justify-between h-full'>
                     <Link to='/'>
                         <Image className='w-20 object-cover' imgSrc={logo} />
@@ -54,7 +54,7 @@ const Header = () => {
                                 </>
                             </motion.ul>
                         )}
-                        <HiMenuAlt2 onClick={() => setSidenav(!sidenav)} className='inline-block md:hidden cursor-pointer w-8 h-6 absolute top-6 right-4' />
+                        <HiMenuAlt2 onClick={() => setSidenav(!sidenav)} className='inline-block lg:hidden cursor-pointer w-8 h-6 absolute top-6 right-4' />
                         {sidenav && (
                             <div className='fixed top-0 left-0 w-full h-screen bg-black text-gray-200 bg-opacity-80 z-50'>
                                 <motion.div

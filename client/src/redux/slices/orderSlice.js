@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { server } from '../../server';
 import axios from 'axios';
 
-export const getAllOrdersOfUserAsyncAsync = createAsyncThunk('order/getAllOrdersOfUserAsync', async (userId) => {
+export const getAllOrdersOfUserAsync = createAsyncThunk('order/getAllOrdersOfUser', async (userId) => {
     try {
         const response = await axios.get(`${server}/order/get-all-orders/${userId}`);
         return response.data;
@@ -42,7 +42,7 @@ export const orderSlice = createSlice({
     name: 'order',
     initialState,
     reducers: {
-        getAllOrdersOfUserAsync: (state, payload) => {
+        getAllOrdersOfUser: (state, payload) => {
             state.isLoading = false;
             state.orders = payload.orders;
         },
@@ -56,14 +56,14 @@ export const orderSlice = createSlice({
         },
     },
     extraReducers: {
-        [getAllOrdersOfUserAsyncAsync.pending.type]: (state) => {
+        [getAllOrdersOfUserAsync.pending.type]: (state) => {
             state.isLoading = true;
         },
-        [getAllOrdersOfUserAsyncAsync.fulfilled.type]: (state, { payload }) => {
+        [getAllOrdersOfUserAsync.fulfilled.type]: (state, { payload }) => {
             state.isLoading = false;
             state.orders = payload.orders;
         },
-        [getAllOrdersOfUserAsyncAsync.rejected.type]: (state, { payload }) => {
+        [getAllOrdersOfUserAsync.rejected.type]: (state, { payload }) => {
             state.isLoading = false;
             state.error = payload;
         },
@@ -92,5 +92,5 @@ export const orderSlice = createSlice({
     },
 });
 
-export const { getAllOrdersOfUserAsync, getAllOrdersOfShop, getAllOrdersOfAdmin } = orderSlice.actions;
+export const { getAllOrdersOfUser, getAllOrdersOfShop, getAllOrdersOfAdmin } = orderSlice.actions;
 export default orderSlice.reducer;

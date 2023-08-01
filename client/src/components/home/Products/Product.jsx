@@ -110,16 +110,14 @@ const Product = ({ data, isEvent }) => {
             </div>
             <div className='max-w-80 py-4 flex flex-col gap-1 border-[1px] border-t-0 px-4'>
                 <div className='flex flex-col justify-between font-titleFont mt-2'>
-                    <Link to={`/shop/preview/${data?.shop._id}`}>
-                        <p className='text-[#767676] text-[14px]'>{data?.shop.name}</p>
-                    </Link>
+                    <p className='text-[#767676] text-[14px]'>{data?.shop.name}</p>
                     <h2 className='text-lg text-primeColor font-bold my-2'>{data?.name.length > 45 ? data?.name.slice(0, 45) + '...' : data?.name}</h2>
                     <Ratings rating={data?.ratings} />
                 </div>
                 <div className='flex items-center justify-between font-titleFont mt-2 mb-2'>
                     <div className='w-40'>
-                        <span className='text-[#767676] text-[18px] mr-2'>${data?.originalPrice === 0 ? data?.originalPrice : data?.discountPrice}</span>
-                        <span className='text-[#767676] text-[14px]'>{data?.originalPrice ? '$ ' + data?.originalPrice : null}</span>
+                        <span className='text-[#767676] text-[18px] mr-2'>&#8377; {data?.originalPrice === 0 ? data?.originalPrice : data?.discountPrice}</span>
+                        <span className='text-[#767676] text-[14px]'>{data?.originalPrice ? <>&#8377; {data?.originalPrice}</> : null}</span>
                     </div>
                     <span className='font-[400] text-[17px] text-[#68d284]'>{data?.sold_out} sold</span>
                 </div>

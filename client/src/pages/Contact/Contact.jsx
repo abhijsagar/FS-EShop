@@ -64,7 +64,7 @@ const Contact = () => {
     };
 
     return (
-        <div className='max-w-container mx-auto px-4'>
+        <div className='max-w-container mx-6 px-4'>
             <Breadcrumbs title='Contact' prevLocation={prevLocation} />
             {successMsg ? (
                 <p className='pb-20 w-96 font-medium text-green-500'>{successMsg}</p>
