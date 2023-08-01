@@ -1,17 +1,15 @@
 import React from "react";
-import Footer from "../components/Layout/Footer";
-import Header from "../components/Layout/Header";
-import Lottie from "react-lottie";
-import animationData from "../assests/animations/107043-success.json";
+
+
+import Lottie from 'react-lottie';
+import animationData from '../assets/animations/107043-success.json';
 
 const OrderSuccessPage = () => {
-  return (
-    <div>
-      <Header />
-      <Success />
-      <Footer />
-    </div>
-  );
+    return (
+        <div>
+            <Success />
+        </div>
+    );
 };
 
 const Success = () => {

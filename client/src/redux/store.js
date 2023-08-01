@@ -1,23 +1,40 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "./reducers/user";
-import { sellerReducer } from "./reducers/seller";
-import { productReducer } from "./reducers/product";
-import { eventReducer } from "./reducers/event";
-import { cartReducer } from "./reducers/cart";
-import { wishlistReducer } from "./reducers/wishlist";
-import { orderReducer } from "./reducers/order";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import orebiReducer from './orebiSlice';
+import userReducer from './slices/userSlice';
+import productReducer from './slices/productSlice';
+import eventReducer from './slices/eventSlice';
+import cartReducer from './slices/cartSlice';
+import wishlistReducer from './slices/wishlistSlice';
+import orderReducer from './slices/orderSlice';
 
+const persistConfig = {
+    key: 'root',
+    version: 1,
+    storage,
+};
 
-const Store = configureStore({
-  reducer: {
+const rootReducer = combineReducers({
+    orebi: orebiReducer,
     user: userReducer,
-    seller: sellerReducer,
     products: productReducer,
     events: eventReducer,
     cart: cartReducer,
     wishlist: wishlistReducer,
     order: orderReducer,
-  },
 });
 
-export default Store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
+});
+
+export let persistor = persistStore(store);

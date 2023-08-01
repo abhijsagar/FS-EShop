@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, ScrollRestoration, Outlet, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import {
-    LoginPage,
-    SignupPage,
     ActivationPage,
-    HomePage,
-    ProductsPage,
-    BestSellingPage,
-    EventsPage,
     FAQPage,
     CheckoutPage,
     PaymentPage,
@@ -18,60 +11,64 @@ import {
     OrderDetailsPage,
     TrackOrderPage,
     UserInbox,
-} from './routes/Routes.js';
+} from './routes/index.js';
+import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Store from './redux/store';
-import { loadSeller, loadUser } from './redux/actions/user';
+import { store } from './redux/store';
 import ProtectedRoute from './routes/ProtectedRoute';
-import { getAllProducts } from './redux/actions/product';
-import { getAllEvents } from './redux/actions/event';
-import axios from 'axios';
+import { loadUserAsync } from './redux/slices/userSlice';
+import { getAllProductsAsync } from './redux/slices/productSlice';
+import { getAllEventsAsync } from './redux/slices/eventSlice';
 import { server } from './server';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import SignIn from './pages/Account/SignIn';
+import SignUp from './pages/Account/SignUp';
+import HeaderBottom from './components/home/Header/HeaderBottom';
+import SpecialCase from './components/SpecialCase/SpecialCase';
+import FooterBottom from './components/home/Footer/FooterBottom';
+import Home from './pages/Home/Home';
+import Shop from './pages/Shop/Shop';
+import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
+import Offer from './pages/Offer/Offer';
+import Header from './components/home/Header/Header';
+import Footer from './components/home/Footer/Footer';
+import Payment from './pages/payment/Payment';
+import Cart from './pages/Cart/Cart';
+import Deals from './pages/Deals/Deals';
 
-const App = () => {
-    const [stripeApikey, setStripeApiKey] = useState('');
-
-    async function getStripeApikey() {
-        const { data } = await axios.get(`${server}/payment/stripeapikey`);
-        setStripeApiKey(data.stripeApikey);
-    }
-    useEffect(() => {
-        Store.dispatch(loadUser());
-        Store.dispatch(loadSeller());
-        Store.dispatch(getAllProducts());
-        Store.dispatch(getAllEvents());
-        getStripeApikey();
-    }, []);
-
+const Layout = () => {
     return (
-        <BrowserRouter>
-            {stripeApikey && (
-                <Elements stripe={loadStripe(stripeApikey)}>
-                    <Routes>
-                        <Route
-                            path='/payment'
-                            element={
-                                <ProtectedRoute>
-                                    <PaymentPage />
-                                </ProtectedRoute>
-                            }
-                        />
-                    </Routes>
-                </Elements>
-            )}
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-                <Route path='/login' element={<LoginPage />} />
-                <Route path='/sign-up' element={<SignupPage />} />
+        <div>
+            <Header />
+            <HeaderBottom />
+            <SpecialCase />
+            <ScrollRestoration />
+            <Outlet />
+            <Footer />
+            <FooterBottom />
+        </div>
+    );
+};
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route>
+            <Route path='/' element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path='/signin' element={<SignIn />} />
+                <Route path='/signup' element={<SignUp />} />
                 <Route path='/activation/:activation_token' element={<ActivationPage />} />
-                <Route path='/products' element={<ProductsPage />} />
-                <Route path='/product/:id' element={<ProductDetailsPage />} />
-                <Route path='/best-selling' element={<BestSellingPage />} />
-                <Route path='/events' element={<EventsPage />} />
+                <Route path='/shop' element={<Shop />} />
+                <Route path='/shop/:id' element={<ProductDetailsPage />} />
+                <Route path='/deals' element={<Deals />} />
+                <Route path='/offer' element={<Offer />} />
                 <Route path='/faq' element={<FAQPage />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='/payment-new' element={<Payment />} />
                 <Route
                     path='/checkout'
                     element={
@@ -113,20 +110,57 @@ const App = () => {
                         </ProtectedRoute>
                     }
                 />
-            </Routes>
-            <ToastContainer
-                position='bottom-center'
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme='dark'
-            />
-        </BrowserRouter>
+            </Route>
+        </Route>
+    )
+);
+
+const App = () => {
+    const [stripeApikey, setStripeApiKey] = useState('');
+
+    async function getStripeApikey() {
+        const { data } = await axios.get(`${server}/payment/stripeapikey`);
+        setStripeApiKey(data.stripeApikey);
+    }
+    useEffect(() => {
+        store.dispatch(loadUserAsync());
+        store.dispatch(getAllProductsAsync());
+        store.dispatch(getAllEventsAsync());
+        getStripeApikey();
+    }, []);
+
+    return (
+        <div className='font-bodyFont'>
+            <BrowserRouter>
+                {stripeApikey && (
+                    <Elements stripe={loadStripe(stripeApikey)}>
+                        <Routes>
+                            <Route
+                                path='/payment'
+                                element={
+                                    <ProtectedRoute>
+                                        <PaymentPage />
+                                    </ProtectedRoute>
+                                }
+                            />
+                        </Routes>
+                    </Elements>
+                )}
+                <ToastContainer
+                    position='bottom-center'
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme='dark'
+                />
+            </BrowserRouter>
+            <RouterProvider router={router} />
+        </div>
     );
 };
 
