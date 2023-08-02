@@ -3,13 +3,11 @@ import React from 'react'
 
 const Account = () => {
   return (
-    <View>
-      <Text>Account</Text>
-      <Image 
-      style={{width: 100}}
-      source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} />
-    </View>
-  )
+      <View>
+          <Text>Account</Text>
+          <Image style={{ width: 100 }} source={'https://reactnative.dev/img/tiny_logo.png'} />
+      </View>
+  );
 }
 
 export default Account

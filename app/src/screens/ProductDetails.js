@@ -11,7 +11,7 @@ import { Button, Stack } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/native";
 import { products } from "../database/DataBase";
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/cartSlice';
+import { addToCart } from '../redux/slices/cartSlice';
 
 const { width } = Dimensions.get("window");
 const ProductDetails = ({ route }) => {
