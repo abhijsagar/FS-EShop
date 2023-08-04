@@ -21,7 +21,7 @@ const PaymentPage = () => {
 
     return (
         <Elements stripe={loadStripe(stripeApikey)}>
-            <div className='max-w-container mx-6 px-4'>
+            <div className='max-w-container mx-auto px-4'>
                 <Breadcrumbs title='Continue Payment' />
                 <div className=''>
                     <CheckoutSteps active={2} />

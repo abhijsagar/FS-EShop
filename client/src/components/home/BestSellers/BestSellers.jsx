@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Heading from '../Products/Heading';
-import Product from '../Products/Product';
+import Product from '../Products/ProductGridView';
 import { useSelector } from 'react-redux';
 
 const BestSellers = () => {

@@ -1,7 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import orebiReducer from './orebiSlice';
 import userReducer from './slices/userSlice';
 import productReducer from './slices/productSlice';
 import eventReducer from './slices/eventSlice';
@@ -16,7 +15,6 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    orebi: orebiReducer,
     user: userReducer,
     products: productReducer,
     events: eventReducer,

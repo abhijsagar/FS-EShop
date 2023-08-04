@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import Heading from '../Products/Heading';
-import Product from '../Products/Product';
+import Product from '../Products/ProductGridView';
 import SampleNextArrow from './SampleNextArrow';
 import SamplePrevArrow from './SamplePrevArrow';
 

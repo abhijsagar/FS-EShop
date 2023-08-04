@@ -12,7 +12,7 @@ const Home = () => {
         <div className='w-full mx-auto'>
             <Banner />
             <BannerBottom />
-            <div className='max-w-container mx-6'>
+            <div className='max-w-container mx-auto'>
                 <Sale />
                 <NewArrivals />
                 <BestSellers />

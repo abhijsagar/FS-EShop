@@ -4,7 +4,7 @@ import Breadcrumbs from '../../components/Layout/Breadcrumbs';
 
 const Payment = () => {
     return (
-        <div className='max-w-container mx-6 px-4'>
+        <div className='max-w-container mx-auto px-4'>
             <Breadcrumbs title='Payment gateway' />
             <div className='pb-10'>
                 <p>Payment gateway only applicable for Production build.</p>

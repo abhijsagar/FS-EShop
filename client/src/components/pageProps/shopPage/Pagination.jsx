@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import Product from '../../home/Products/Product';
 import { useSelector } from 'react-redux';
+import ProductGridView from '../../home/Products/ProductGridView';
+import ProductListView from '../../home/Products/ProductListView';
 
 const Pagination = ({ itemsView, sortType, perPage }) => {
     const { allProducts } = useSelector((state) => state.products);
@@ -36,7 +37,16 @@ const Pagination = ({ itemsView, sortType, perPage }) => {
                     currentItems &&
                     currentItems.map((item, index) => (
                         <div key={item._id} className='w-full'>
-                            <Product data={item} key={index} />
+                            <ProductGridView data={item} key={index} />
+                        </div>
+                    ))}
+            </div>
+            <div className='w-full gap-10 mdl:gap-4 lg:gap-10'>
+                {itemsView === 'list' &&
+                    currentItems &&
+                    currentItems.map((item, index) => (
+                        <div key={item._id} className='w-full'>
+                            <ProductListView data={item} key={index} />
                         </div>
                     ))}
             </div>

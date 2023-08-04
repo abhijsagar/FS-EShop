@@ -5,6 +5,7 @@ import ProductBanner from '../../components/pageProps/shopPage/ProductBanner';
 import ShopSideNav from '../../components/pageProps/shopPage/ShopSideNav';
 
 const Shop = () => {
+    const [prevLocation] = useState('');
     const [itemsView, setItemsView] = useState('grid');
     const [sortType, setsortType] = useState('bestSellers');
     const [perPage, setPerPage] = useState(12);
@@ -22,8 +23,8 @@ const Shop = () => {
     };
 
     return (
-        <div className='max-w-container mx-6 px-4'>
-            <Breadcrumbs title='Products' />
+        <div className='max-w-container mx-auto px-4'>
+            <Breadcrumbs title='Products' prevLocation={prevLocation} />
             <div className='w-full h-full flex pb-20 gap-10'>
                 <div className='w-[20%] lgl:w-[25%] hidden mdl:inline-flex h-full'>
                     <ShopSideNav />

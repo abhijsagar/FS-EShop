@@ -74,7 +74,7 @@ const HeaderBottom = () => {
     return (
         <>
             <div className='w-full bg-[#F5F5F3] relative'>
-                <div className='max-w-container mx-6'>
+                <div className='max-w-container mx-auto'>
                     <Flex className='flex flex-col md:flex-row items-center md:gap-4 lg:items-center justify-between w-full px-4 py-4 h-full lg:h-24'>
                         <div onClick={() => setShow(!show)} ref={ref} className='flex h-14 cursor-pointer items-center gap-2 text-primeColor'>
                             <HiOutlineMenuAlt4 className='w-5 h-5' />
@@ -128,7 +128,7 @@ const HeaderBottom = () => {
                                     initial={{ y: 30, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ duration: 0.5 }}
-                                    className='absolute top-6 left-0 z-50 bg-primeColor w-44 text-[#767676] h-auto p-4 pb-6'>
+                                    className='absolute top-10 left-0 z-50 bg-primeColor w-44 text-[#767676] h-auto p-4 pb-6'>
                                     {!isAuthenticated ? (
                                         <>
                                             <Link onClick={() => setShowUser(false)} to='/signin'>

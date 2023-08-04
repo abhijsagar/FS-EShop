@@ -13,11 +13,9 @@ const Contact = () => {
     const [email, setEmail] = useState('');
     const [messages, setMessages] = useState('');
 
-    // ========== Error Messages Start here ============
     const [errClientName, setErrClientName] = useState('');
     const [errEmail, setErrEmail] = useState('');
     const [errMessages, setErrMessages] = useState('');
-    // ========== Error Messages End here ==============
     const [successMsg, setSuccessMsg] = useState('');
 
     const handleName = (e) => {
@@ -33,13 +31,11 @@ const Contact = () => {
         setErrMessages('');
     };
 
-    // ================= Email Validation start here =============
     const EmailValidation = (email) => {
         return String(email)
             .toLowerCase()
             .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
     };
-    // ================= Email Validation End here ===============
 
     const handlePost = (e) => {
         e.preventDefault();
@@ -64,7 +60,7 @@ const Contact = () => {
     };
 
     return (
-        <div className='max-w-container mx-6 px-4'>
+        <div className='max-w-container mx-auto px-4'>
             <Breadcrumbs title='Contact' prevLocation={prevLocation} />
             {successMsg ? (
                 <p className='pb-20 w-96 font-medium text-green-500'>{successMsg}</p>

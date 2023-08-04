@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from '../../styles/styles';
-import Product from '../../components/home/Products/Product';
+import Product from '../../components/home/Products/ProductGridView';
 
 const SuggestedProduct = ({ data }) => {
     const { allProducts } = useSelector((state) => state.products);

@@ -4,10 +4,12 @@ import Loader from '../components/Layout/Loader';
 import ProfileSideBar from '../components/Profile/ProfileSidebar';
 import ProfileContent from '../components/Profile/ProfileContent';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 const ProfilePage = () => {
+    const location = useLocation();
     const { loading } = useSelector((state) => state.user);
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(location?.state?.active || 1);
 
     return (
         <div>
