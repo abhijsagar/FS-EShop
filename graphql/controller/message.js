@@ -5,6 +5,26 @@ const express = require("express");
 const cloudinary = require("cloudinary");
 const router = express.Router();
 
+
+// get all messages with conversation id
+router.get(
+  "/get-all-messages/:id",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const messages = await Messages.find({
+        conversationId: req.params.id,
+      });
+
+      res.status(201).json({
+        success: true,
+        messages,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message), 500);
+    }
+  })
+);
+
 // create new message
 router.post(
   "/create-new-message",
@@ -38,25 +58,6 @@ router.post(
       res.status(201).json({
         success: true,
         message,
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message), 500);
-    }
-  })
-);
-
-// get all messages with conversation id
-router.get(
-  "/get-all-messages/:id",
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const messages = await Messages.find({
-        conversationId: req.params.id,
-      });
-
-      res.status(201).json({
-        success: true,
-        messages,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message), 500);

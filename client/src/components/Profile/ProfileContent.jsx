@@ -11,13 +11,13 @@ import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
-import * as user from '../../redux/slices/userSlice';
+import { RxCross1 } from 'react-icons/rx';
 import { Country, State } from 'country-state-city';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { getAllOrdersOfUserAsync } from '../../redux/slices/orderSlice';
+import { deleteUserAddressAsync, loadUserAsync, updatUserAddressAsync, updateUserInformationAsync } from '../../redux/slices/userSlice';
 
 const ProfileContent = ({ active }) => {
     const { user, error, successMessage } = useSelector((state) => state.user);
@@ -28,20 +28,9 @@ const ProfileContent = ({ active }) => {
     const [, setAvatar] = useState(null);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (error) {
-            toast.error(error);
-            dispatch({ type: 'clearErrors' });
-        }
-        if (successMessage) {
-            toast.success(successMessage);
-            dispatch({ type: 'clearMessages' });
-        }
-    }, [error, successMessage]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(user.updateUserInformation(name, email, phoneNumber, password));
+        dispatch(updateUserInformationAsync(name, email, phoneNumber, password));
     };
 
     const handleImage = async (e) => {
@@ -59,7 +48,7 @@ const ProfileContent = ({ active }) => {
                         }
                     )
                     .then((response) => {
-                        dispatch(user.loadUser());
+                        dispatch(loadUserAsync());
                         toast.success('avatar updated successfully!');
                     })
                     .catch((error) => {
@@ -522,7 +511,7 @@ const Address = () => {
         if (addressType === '' || country === '' || city === '') {
             toast.error('Please fill all the fields!');
         } else {
-            dispatch(user.updatUserAddress(country, city, address1, address2, zipCode, addressType));
+            dispatch(updatUserAddressAsync(country, city, address1, address2, zipCode, addressType));
             setOpen(false);
             setCountry('');
             setCity('');
@@ -535,7 +524,7 @@ const Address = () => {
 
     const handleDelete = (item) => {
         const id = item._id;
-        dispatch(user.deleteUserAddress(id));
+        dispatch(deleteUserAddressAsync(id));
     };
 
     return (
