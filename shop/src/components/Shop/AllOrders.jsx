@@ -1,8 +1,8 @@
 import { Button } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
-import React, { useEffect } from '../../../../01admin/node_modules/@types/react';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
-import { Link } from '../../../../01admin/node_modules/react-router-dom/dist';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Loader from '../Layout/Loader';
 import { getAllOrdersOfShop } from '../../redux/actions/order';
 import { AiOutlineArrowRight } from 'react-icons/ai';

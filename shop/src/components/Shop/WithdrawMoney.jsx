@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from '../../../../01admin/node_modules/@types/react';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllOrdersOfShop } from '../../redux/actions/order';
 import styles from '../../styles/styles';
 import { RxCross1 } from 'react-icons/rx';

@@ -37,10 +37,8 @@ cloudinary.config({
 
 
 // create server
-const server = app.listen(process.env.GRAPHQL_PORT, () => {
-  console.log(
-    `Server is running on http://localhost:${process.env.GRAPHQL_PORT}`
-  );
+const server = app.listen(process.env.PORT, () => {
+    console.log(`Server is running on http://localhost:${process.env.PORT}`);
 });
 
 // unhandled promise rejection

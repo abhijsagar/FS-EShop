@@ -1,6 +1,6 @@
-import React, { useEffect } from '../../../01admin/node_modules/@types/react';
-import { useSelector } from '../../../01admin/node_modules/react-redux/es';
-import { useNavigate } from '../../../01admin/node_modules/react-router-dom/dist';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ShopCreate from '../components/Shop/ShopCreate';
 
 const ShopCreatePage = () => {

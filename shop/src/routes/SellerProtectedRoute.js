@@ -1,5 +1,5 @@
-import { useSelector } from '../../../01admin/node_modules/react-redux/es';
-import { Navigate } from '../../../01admin/node_modules/react-router-dom/dist';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import Loader from '../components/Layout/Loader';
 
 const SellerProtectedRoute = ({ children }) => {

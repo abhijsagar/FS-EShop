@@ -4,7 +4,10 @@ NodeJs, ExpressJs, MongoDB
 # E-Shop Admin Dashboard
 ReactJs, Redux, Redux Thunk
 
-# Bachkend for E-Shop Client
+# Backend for E-Shop Seller Portal
+NodeJs, ExpressJs, MongoDB
+
+# Bachkend for E-Shop Customer Portal
 NodeJs, ExpressJs, GraphQL, Applo Client, MongoDB
 
 # E-Shop Client

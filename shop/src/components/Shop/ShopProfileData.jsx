@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from '../../../../01admin/node_modules/@types/react';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
-import { Link, useParams } from '../../../../01admin/node_modules/react-router-dom/dist';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { getAllProductsShop } from '../../redux/actions/product';
 import styles from '../../styles/styles';
 import ProductCard from '../Route/ProductCard/ProductCard';

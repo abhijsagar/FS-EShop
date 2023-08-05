@@ -1,4 +1,4 @@
-import React from '../../../../01admin/node_modules/@types/react';
+import React from 'react';
 import DashboardHeader from '../../components/Shop/Layout/DashboardHeader';
 import DashboardSideBar from '../../components/Shop/Layout/DashboardSideBar';
 import DashboardMessages from '../../components/Shop/DashboardMessages';

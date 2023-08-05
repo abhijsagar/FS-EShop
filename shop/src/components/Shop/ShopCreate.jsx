@@ -1,7 +1,7 @@
-import { React, useState } from '../../../../01admin/node_modules/@types/react';
+import { React, useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import styles from '../../styles/styles';
-import { Link, useNavigate } from '../../../../01admin/node_modules/react-router-dom/dist';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { server } from '../../server';
 import { toast } from 'react-toastify';

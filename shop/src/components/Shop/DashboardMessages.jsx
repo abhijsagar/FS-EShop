@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { useRef, useState } from '../../../../01admin/node_modules/@types/react';
-import { useEffect } from '../../../../01admin/node_modules/@types/react';
+import React, { useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { server } from '../../server';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
-import { useNavigate } from '../../../../01admin/node_modules/react-router-dom/dist';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight, AiOutlineSend } from 'react-icons/ai';
 import styles from '../../styles/styles';
 import { TfiGallery } from 'react-icons/tfi';

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useEffect } from '../../../01admin/node_modules/@types/react';
-import { useState } from '../../../01admin/node_modules/@types/react';
-import { useParams } from '../../../01admin/node_modules/react-router-dom/dist';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { server } from '../server';
 
 const SellerActivationPage = () => {

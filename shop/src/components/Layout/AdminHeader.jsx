@@ -1,10 +1,10 @@
-import React from '../../../../01admin/node_modules/@types/react';
+import React from 'react';
 import { AiOutlineGift } from 'react-icons/ai';
 import { BiMessageSquareDetail } from 'react-icons/bi';
 import { FiPackage, FiShoppingBag } from 'react-icons/fi';
 import { MdOutlineLocalOffer } from 'react-icons/md';
-import { useSelector } from '../../../../01admin/node_modules/react-redux/es';
-import { Link } from '../../../../01admin/node_modules/react-router-dom/dist';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const AdminHeader = () => {
     const { user } = useSelector((state) => state.user);

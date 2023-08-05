@@ -14,7 +14,7 @@ cloudinary.config({
 
 app.use(
     cors({
-        origin: 'http://localhost:3100',
+        origin: ['http://localhost:3100', 'http://localhost:3200', 'http://localhost:3300', 'http://localhost:3000'],
         credentials: true,
     })
 );

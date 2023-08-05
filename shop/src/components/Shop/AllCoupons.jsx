@@ -1,10 +1,10 @@
 import { Button } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
 import axios from 'axios';
-import React, { useEffect, useState } from '../../../../01admin/node_modules/@types/react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { RxCross1 } from 'react-icons/rx';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/styles';
 import Loader from '../Layout/Loader';
 import { server } from '../../server';

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from '../../../../01admin/node_modules/@types/react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineArrowRight, AiOutlineMoneyCollect } from 'react-icons/ai';
 import styles from '../../styles/styles';
-import { Link } from '../../../../01admin/node_modules/react-router-dom/dist';
+import { Link } from 'react-router-dom';
 import { MdBorderClear } from 'react-icons/md';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllOrdersOfShop } from '../../redux/actions/order';
 import { getAllProductsShop } from '../../redux/actions/product';
 import { Button } from '@material-ui/core';

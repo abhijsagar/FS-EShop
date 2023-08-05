@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from '../../../../01admin/node_modules/@types/react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/styles';
 import { BsFillBagFill } from 'react-icons/bs';
-import { Link, useNavigate, useParams } from '../../../../01admin/node_modules/react-router-dom/dist';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllOrdersOfShop } from '../../redux/actions/order';
 import { server } from '../../server';
 import axios from 'axios';

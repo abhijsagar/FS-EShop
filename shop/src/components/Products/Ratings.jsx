@@ -1,4 +1,4 @@
-import React from '../../../../01admin/node_modules/@types/react';
+import React from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
 

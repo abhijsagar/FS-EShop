@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from '../../../../01admin/node_modules/@types/react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import { useDispatch, useSelector } from '../../../../01admin/node_modules/react-redux/es';
-import { useNavigate } from '../../../../01admin/node_modules/react-router-dom/dist';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { createProduct } from '../../redux/actions/product';
 import { categoriesData } from '../../static/data';
 import { toast } from 'react-toastify';
