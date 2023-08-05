@@ -1,24 +1,11 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ShopCreatePage, SellerActivationPage, ShopLoginPage } from './routes/Routes.js';
 import {
-    ShopDashboardPage,
-    ShopCreateProduct,
-    ShopAllProducts,
-    ShopCreateEvents,
-    ShopAllEvents,
-    ShopAllCoupouns,
-    ShopPreviewPage,
-    ShopAllOrders,
-    ShopOrderDetails,
-    ShopAllRefunds,
-    ShopSettingsPage,
-    ShopWithDrawMoneyPage,
-    ShopInboxPage,
-    ShopHomePage,
-} from './routes/ShopRoutes';
-import {
+    LoginPage,
+    SignupPage,
+    ActivationPage,
+    ChangePasswordPage,
     AdminDashboardPage,
     AdminDashboardUsers,
     AdminDashboardSellers,
@@ -26,13 +13,14 @@ import {
     AdminDashboardProducts,
     AdminDashboardEvents,
     AdminDashboardWithdraw,
+    AdminDashboardProfile,
+    HomePage,
 } from './routes/AdminRoutes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Store from './redux/store';
 import { loadSeller, loadUser } from './redux/actions/user';
 import ProtectedAdminRoute from './routes/ProtectedAdminRoute';
-import SellerProtectedRoute from './routes/SellerProtectedRoute';
 import { getAllProducts } from './redux/actions/product';
 import { getAllEvents } from './redux/actions/event';
 
@@ -47,118 +35,13 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<ShopLoginPage />} />
-                <Route path='/shop-create' element={<ShopCreatePage />} />
-                <Route path='/seller/activation/:activation_token' element={<SellerActivationPage />} />
-                <Route path='/shop/preview/:id' element={<ShopPreviewPage />} />
+                <Route path='/' element={<HomePage />} />
+                <Route path='/admin-login' element={<LoginPage />} />
+                <Route path='/admin-signup' element={<SignupPage />} />
+                <Route path='/admin-change-password' element={<ChangePasswordPage />} />
+                <Route path='/activation/:activation_token' element={<ActivationPage />} />
                 <Route
-                    path='/shop/:id'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopHomePage />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/settings'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopSettingsPage />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopDashboardPage />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-create-product'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopCreateProduct />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-orders'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopAllOrders />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-refunds'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopAllRefunds />
-                        </SellerProtectedRoute>
-                    }
-                />
-
-                <Route
-                    path='/order/:id'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopOrderDetails />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-products'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopAllProducts />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-create-event'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopCreateEvents />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-events'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopAllEvents />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-coupouns'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopAllCoupouns />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-withdraw-money'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopWithDrawMoneyPage />
-                        </SellerProtectedRoute>
-                    }
-                />
-                <Route
-                    path='/dashboard-messages'
-                    element={
-                        <SellerProtectedRoute>
-                            <ShopInboxPage />
-                        </SellerProtectedRoute>
-                    }
-                />
-                {/* Admin Routes */}
-                <Route
-                    path='/admin/dashboard'
+                    path='/admin-dashboard'
                     element={
                         <ProtectedAdminRoute>
                             <AdminDashboardPage />
@@ -206,10 +89,18 @@ const App = () => {
                     }
                 />
                 <Route
-                    path='/admin-withdraw-request'
+                    path='/admin-withdraw'
                     element={
                         <ProtectedAdminRoute>
                             <AdminDashboardWithdraw />
+                        </ProtectedAdminRoute>
+                    }
+                />
+                <Route
+                    path='/admin-profile'
+                    element={
+                        <ProtectedAdminRoute>
+                            <AdminDashboardProfile />
                         </ProtectedAdminRoute>
                     }
                 />

@@ -9,27 +9,24 @@ process.on("uncaughtException", (err) => {
 });
 
 // config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config({
-    path: "../.env",
-  });
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+    require('dotenv').config({
+        path: '.env',
+    });
 }
 
 // connect db
 connectDatabase();
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-})
-
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // create server
-const server = app.listen(process.env.SERVER_PORT, () => {
-  console.log(
-    `Server is running on http://localhost:${process.env.SERVER_PORT}`
-  );
+const server = app.listen(process.env.PORT, () => {
+    console.log(`Server is running on http://localhost:${process.env.PORT}`);
 });
 
 // unhandled promise rejection

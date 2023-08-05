@@ -6,8 +6,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-require("dotenv").config({
-  path: "../.env",
+require('dotenv').config({
+    path: '.env',
 });
 
 app.use(cors());
@@ -108,6 +108,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(process.env.SOCKET_PORT || 4000, () => {
-  console.log(`server is running on port ${process.env.SOCKET_PORT || 4000}`);
+server.listen(process.env.SOCKET_PORT || 4200, () => {
+    console.log(`server is running on port ${process.env.SOCKET_PORT || 4200}`);
 });

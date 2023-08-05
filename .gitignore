@@ -3,18 +3,22 @@
 admin/node_modules/
 admin/package-lock.json/
 
-app/.expo/
-app/node_modules/
-app/package-lock.json/
-
-client/node_modules/
-client/package-lock.json/
+customer/node_modules/
+customer/package-lock.json/
 
 graphql/node_modules/
 graphql/package-lock.json/
 
+mobile/.expo/
+mobile/.expo-shared/
+mobile/node_modules/
+mobile/package-lock.json/
+
 server/node_modules/
 server/package-lock.json/
+
+shop/node_modules/
+shop/package-lock.json/
 
 socket/node_modules/
 socket/package-lock.json/
