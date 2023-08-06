@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 const ProductDetailsPage = () => {
     const { products } = useSelector((state) => state.products);
-    const { allEvents } = useSelector((state) => state.events);
+    const { events } = useSelector((state) => state.events);
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [searchParams] = useSearchParams();
@@ -16,13 +16,13 @@ const ProductDetailsPage = () => {
 
     useEffect(() => {
         if (eventData !== null) {
-            const data = allEvents && allEvents.find((i) => i._id === id);
+            const data = events && events.find((i) => i._id === id);
             setData(data);
         } else {
             const data = products && products?.find((i) => i._id === id);
             setData(data);
         }
-    }, [products, allEvents]);
+    }, [products, events]);
 
     return (
         <div className='w-full mt-8 mx-auto border-b-[1px] border-b-gray-300'>

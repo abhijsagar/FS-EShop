@@ -271,8 +271,8 @@ const CartData = ({ handleSubmit, totalPrice, shipping, subTotalPrice, couponCod
             <form onSubmit={handleSubmit}>
                 <input
                     type='text'
-                    className={`${styles.input} h-[40px] pl-2`}
-                    placeholder='Coupoun code'
+                    className={`${styles.input} w-[300px] h-[40px] pl-2`}
+                    placeholder='Coupon code'
                     value={couponCode}
                     onChange={(e) => setCouponCode(e.target.value)}
                     required

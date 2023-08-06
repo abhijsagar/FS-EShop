@@ -30,7 +30,7 @@ const UserOrderDetails = () => {
     const reviewHandler = async (e) => {
         await axios
             .put(
-                `${server}/shop/create-new-review`,
+                `${server}/product/create-new-review`,
                 {
                     user,
                     rating,

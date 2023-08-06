@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProductGridView from '../../home/Products/ProductGridView';
 import ProductListView from '../../home/Products/ProductListView';
 
-const Pagination = ({ itemsView, sortType, perPage }) => {
+const Pagination = ({ itemsView, sortType, perPage, filterBy }) => {
     const { products } = useSelector((state) => state.products);
     const [itemOffset, setItemOffset] = useState(0);
     const [itemStart, setItemStart] = useState(1);
@@ -19,7 +19,17 @@ const Pagination = ({ itemsView, sortType, perPage }) => {
     };
 
     let currentItems = [];
-    currentItems = products?.slice(itemOffset, endOffset);
+
+    if (filterBy.type === 'category') {
+        currentItems = products.filter((item) => item.category === filterBy.value);
+    } else if (filterBy.type === 'price') {
+        const price = filterBy.value.split('-');
+        currentItems = products.filter((item) => item.discountPrice >= parseInt(price[0]) && item.discountPrice <= parseInt(price[1]));
+    } else {
+        currentItems = products;
+    }
+
+    currentItems = currentItems?.slice(itemOffset, endOffset);
     if (sortType === 'bestSellers') {
         currentItems?.sort((a, b) => b.sold_out - a.sold_out);
     } else if (sortType === 'newArrival') {
@@ -64,7 +74,7 @@ const Pagination = ({ itemsView, sortType, perPage }) => {
                     activeClassName='bg-black text-white'
                 />
                 <p className='text-base font-normal text-lightText'>
-                    Products from {itemStart === 0 ? 1 : itemStart} to {endOffset} of {products?.length}
+                    Products from {itemStart === 0 ? 1 : itemStart} to {endOffset} of {currentItems?.length}
                 </p>
             </div>
         </div>

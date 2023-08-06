@@ -24,39 +24,43 @@ const OrderDetails = () => {
     const data = orders && orders.find((item) => item._id === id);
 
     const orderUpdateHandler = async (e) => {
-        await axios
-            .put(
-                `${server}/order/update-order-status/${id}`,
-                {
-                    status,
-                },
-                { withCredentials: true }
-            )
-            .then((res) => {
-                toast.success('Order updated!');
-                navigate('/dashboard-orders');
-            })
-            .catch((error) => {
-                toast.error(error.response.data.message);
-            });
+        if (status !== '') {
+            await axios
+                .put(
+                    `${server}/order/update-order-status/${id}`,
+                    {
+                        status,
+                    },
+                    { withCredentials: true }
+                )
+                .then((res) => {
+                    toast.success('Order updated!');
+                    navigate('/dashboard-orders');
+                })
+                .catch((error) => {
+                    toast.error(error.response.data.message);
+                });
+        }
     };
 
     const refundOrderUpdateHandler = async (e) => {
-        await axios
-            .put(
-                `${server}/order/order-refund-success/${id}`,
-                {
-                    status,
-                },
-                { withCredentials: true }
-            )
-            .then((res) => {
-                toast.success('Order updated!');
-                dispatch(getAllOrdersOfShop(seller._id));
-            })
-            .catch((error) => {
-                toast.error(error.response.data.message);
-            });
+        if (status !== '') {
+            await axios
+                .put(
+                    `${server}/order/order-refund-success/${id}`,
+                    {
+                        status,
+                    },
+                    { withCredentials: true }
+                )
+                .then((res) => {
+                    toast.success('Order updated!');
+                    dispatch(getAllOrdersOfShop(seller._id));
+                })
+                .catch((error) => {
+                    toast.error(error.response.data.message);
+                });
+        }
     };
 
     console.log(data?.status);
@@ -92,7 +96,7 @@ const OrderDetails = () => {
                         <div className='w-full'>
                             <h5 className='pl-3 text-[20px]'>{item.name}</h5>
                             <h5 className='pl-3 text-[20px] text-[#00000091]'>
-                                US${item.discountPrice} x {item.qty}
+                                &#8377;{item.discountPrice} x {item.qty}
                             </h5>
                         </div>
                     </div>
@@ -100,7 +104,7 @@ const OrderDetails = () => {
 
             <div className='border-t w-full text-right'>
                 <h5 className='pt-3 text-[18px]'>
-                    Total Price: <strong>US${data?.totalPrice}</strong>
+                    Total Price: <strong>&#8377;{data?.totalPrice}</strong>
                 </h5>
             </div>
             <br />

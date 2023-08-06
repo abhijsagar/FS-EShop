@@ -3,7 +3,7 @@ import { ImPlus } from 'react-icons/im';
 import NavTitle from './NavTitle';
 import { categoriesData } from '../../../../static';
 
-const Category = () => {
+const Category = ({ setFilterBy }) => {
     const [category, setCategory] = useState([]);
 
     const setShowSubCat = (id) => {
@@ -27,8 +27,11 @@ const Category = () => {
                         return (
                             index < 6 && (
                                 <>
-                                    <li key={id} className='border-b-[1px] border-b-[#F0F0F0] pb-2 flex items-center justify-between'>
-                                        <span>{title}</span>
+                                    <li
+                                        key={id}
+                                        onClick={() => setFilterBy({ type: 'category', value: title })}
+                                        className='border-b-[1px] border-b-[#F0F0F0] pb-2 flex items-center justify-between'>
+                                        <span className='w-full '>{title}</span>
                                         {subCategories.length > 0 && (
                                             <span
                                                 onClick={() => setShowSubCat(id)}
@@ -41,7 +44,7 @@ const Category = () => {
                                         <ul className='flex flex-col ml-5 gap-4 text-sm lg:text-base text-[#767676]'>
                                             {subCategories.map(({ id, title }) => (
                                                 <li key={id} className='border-b-[1px] border-b-[#F0F0F0] pb-2 flex items-center justify-between'>
-                                                    {title}
+                                                    <a>{title}</a>
                                                 </li>
                                             ))}
                                         </ul>

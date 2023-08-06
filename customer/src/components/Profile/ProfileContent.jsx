@@ -61,7 +61,7 @@ const ProfileContent = ({ active }) => {
             {/* profile */}
             {active === 1 && (
                 <>
-                    <div className='flex justify-center w-full'>
+                    <div className='flex justify-center w-full lg:w-[50%] md:w-full sm:w-full'>
                         <div className='relative'>
                             <img src={`${user?.avatar?.url}`} className='w-[150px] h-[150px] rounded-full object-cover border-[3px] border-[#3ad132]' alt='' />
                             <div className='w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[5px] right-[5px]'>
@@ -74,7 +74,7 @@ const ProfileContent = ({ active }) => {
                     </div>
                     <br />
                     <br />
-                    <div className='w-full px-5'>
+                    <div className='w-full px-5 lg:w-[50%] md:w-full sm:w-full'>
                         <form onSubmit={handleSubmit} aria-required={true}>
                             <div className='w-full 800px:flex block pb-3'>
                                 <div className=' w-[100%] 800px:w-[50%]'>
@@ -100,7 +100,7 @@ const ProfileContent = ({ active }) => {
                             </div>
 
                             <div className='w-full 800px:flex block pb-3'>
-                                <div className=' w-[100%] 800px:w-[50%]'>
+                                {/* <div className=' w-[100%] 800px:w-[50%]'>
                                     <label className='block pb-2'>Phone Number</label>
                                     <input
                                         type='number'
@@ -109,7 +109,7 @@ const ProfileContent = ({ active }) => {
                                         value={phoneNumber}
                                         onChange={(e) => setPhoneNumber(e.target.value)}
                                     />
-                                </div>
+                                </div> */}
 
                                 <div className=' w-[100%] 800px:w-[50%]'>
                                     <label className='block pb-2'>Enter your password</label>
@@ -238,7 +238,7 @@ const AllOrders = () => {
             row.push({
                 id: item._id,
                 itemsQty: item.cart.length,
-                total: 'US$ ' + item.totalPrice,
+                total: '&#8377; ' + item.totalPrice,
                 status: item.status,
             });
         });
@@ -318,7 +318,7 @@ const AllRefundOrders = () => {
             row.push({
                 id: item._id,
                 itemsQty: item.cart.length,
-                total: 'US$ ' + item.totalPrice,
+                total: '&#8377; ' + item.totalPrice,
                 status: item.status,
             });
         });
@@ -396,7 +396,7 @@ const TrackOrder = () => {
             row.push({
                 id: item._id,
                 itemsQty: item.cart.length,
-                total: 'US$ ' + item.totalPrice,
+                total: '&#8377; ' + item.totalPrice,
                 status: item.status,
             });
         });
@@ -431,8 +431,8 @@ const ChangePassword = () => {
     };
     return (
         <div className='w-full px-5'>
-            <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>Change Passowrd</h2>
-            <div className='w-full'>
+            <h2 className='mb-4 text-4xl text-primeColor font-titleFont font-bold'>Change Password</h2>
+            <div className='lg:w-[50%] md:w-full sm:w-full'>
                 <form aria-required onSubmit={passwordChangeHandler} className='flex flex-col items-center'>
                     <div className=' w-[100%] 800px:w-[50%] mt-5'>
                         <label className='block pb-2'>Enter your old password</label>
