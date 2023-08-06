@@ -38,7 +38,7 @@ const Footer = () => {
                     <FooterListTitle title=' More about AS Shop' />
                     <div className='flex flex-col gap-6'>
                         <p className='text-base w-full xl:w-[80%]'>
-                            AS Shpo is one of the world's leading ecommerce brands and is internationally recognized for celebrating the essence of classic
+                            AS Shop is one of the world's leading ecommerce brands and is internationally recognized for celebrating the essence of classic
                             Worldwide cool looking style.
                         </p>
                         <ul className='flex items-center gap-2'>

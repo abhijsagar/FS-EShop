@@ -42,7 +42,7 @@ const HeaderBottom = () => {
     const { isAuthenticated, user } = useSelector((state) => state.user);
     const { wishlist } = useSelector((state) => state.wishlist);
     const { cart } = useSelector((state) => state.cart);
-    const { allProducts } = useSelector((state) => state.products);
+    const { products } = useSelector((state) => state.products);
     const [show, setShow] = useState(false);
     const [showUser, setShowUser] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -67,7 +67,7 @@ const HeaderBottom = () => {
     };
 
     useEffect(() => {
-        const filtered = allProducts && allProducts.filter((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+        const filtered = products && products?.filter((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
         setFilteredProducts(filtered);
     }, [searchQuery]);
 
@@ -84,7 +84,7 @@ const HeaderBottom = () => {
                                     initial={{ y: 30, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ duration: 0.5 }}
-                                    className='absolute top-12 z-50 bg-primeColor w-auto text-[#767676] h-auto p-4 pb-6'>
+                                    className='absolute top-20 z-50 bg-primeColor w-auto text-[#767676] h-auto p-4 pb-6'>
                                     {categoriesData &&
                                         categoriesData.map((i) => {
                                             const handleSubmit = (i) => {
@@ -128,7 +128,7 @@ const HeaderBottom = () => {
                                     initial={{ y: 30, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ duration: 0.5 }}
-                                    className='absolute top-10 left-0 z-50 bg-primeColor w-44 text-[#767676] h-auto p-4 pb-6'>
+                                    className='absolute top-10 -left-20 z-50 bg-primeColor w-44 text-[#767676] h-auto p-4 pb-6'>
                                     {!isAuthenticated ? (
                                         <>
                                             <Link onClick={() => setShowUser(false)} to='/signin'>

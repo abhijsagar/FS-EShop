@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AiFillHeart, AiFillStar, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineStar } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import styles from '../../../styles/styles';
 import { useDispatch, useSelector } from 'react-redux';

@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux';
 
 const BestSellers = () => {
     const [data, setData] = useState([]);
-    const { allProducts } = useSelector((state) => state.products);
+    const { products } = useSelector((state) => state.products);
 
     useEffect(() => {
-        const allProductsData = allProducts ? [...allProducts] : [];
-        const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
+        const productsData = products ? [...products] : [];
+        const sortedData = productsData?.sort((a, b) => b.sold_out - a.sold_out);
         const firstFive = sortedData && sortedData.slice(0, 4);
         setData(firstFive);
-    }, [allProducts]);
+    }, [products]);
 
     return (
         <div className='w-full pb-20'>

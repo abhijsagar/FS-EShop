@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { categoriesData } from '../../static/data';
+import { categoriesData } from '../../static/index';
 import { toast } from 'react-toastify';
 import { createevent } from '../../redux/actions/event';
 

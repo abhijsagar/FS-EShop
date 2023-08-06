@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { server } from '../server';
+import Lottie from 'react-lottie';
+import animationData from '../assests/animations/107043-success.json';
 
 const SellerActivationPage = () => {
     const { activation_token } = useParams();
@@ -26,6 +28,15 @@ const SellerActivationPage = () => {
         }
     }, []);
 
+    const defaultOptions = {
+        loop: false,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+        },
+    };
+
     return (
         <div
             style={{
@@ -35,6 +46,7 @@ const SellerActivationPage = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
             }}>
+            <Lottie options={defaultOptions} width={300} height={300} />
             {error ? <p>Your token is expired!</p> : <p>Your account has been created suceessfully!</p>}
         </div>
     );

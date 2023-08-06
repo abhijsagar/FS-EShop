@@ -5,21 +5,21 @@ import ProductGridView from '../../home/Products/ProductGridView';
 import ProductListView from '../../home/Products/ProductListView';
 
 const Pagination = ({ itemsView, sortType, perPage }) => {
-    const { allProducts } = useSelector((state) => state.products);
+    const { products } = useSelector((state) => state.products);
     const [itemOffset, setItemOffset] = useState(0);
     const [itemStart, setItemStart] = useState(1);
 
     const endOffset = itemOffset + perPage;
-    const pageCount = Math.ceil(allProducts.length / perPage);
+    const pageCount = Math.ceil(products?.length / perPage);
 
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * perPage) % allProducts.length;
+        const newOffset = (event.selected * perPage) % products?.length;
         setItemOffset(newOffset);
         setItemStart(newOffset);
     };
 
     let currentItems = [];
-    currentItems = allProducts.slice(itemOffset, endOffset);
+    currentItems = products?.slice(itemOffset, endOffset);
     if (sortType === 'bestSellers') {
         currentItems?.sort((a, b) => b.sold_out - a.sold_out);
     } else if (sortType === 'newArrival') {
@@ -64,7 +64,7 @@ const Pagination = ({ itemsView, sortType, perPage }) => {
                     activeClassName='bg-black text-white'
                 />
                 <p className='text-base font-normal text-lightText'>
-                    Products from {itemStart === 0 ? 1 : itemStart} to {endOffset} of {allProducts.length}
+                    Products from {itemStart === 0 ? 1 : itemStart} to {endOffset} of {products?.length}
                 </p>
             </div>
         </div>

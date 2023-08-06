@@ -8,14 +8,14 @@ import SamplePrevArrow from './SamplePrevArrow';
 
 const NewArrivals = () => {
     const [data, setData] = useState([]);
-    const { allProducts } = useSelector((state) => state.products);
+    const { products } = useSelector((state) => state.products);
 
     useEffect(() => {
-        const allProductsData = allProducts ? [...allProducts] : [];
-        const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
+        const productsData = products ? [...products] : [];
+        const sortedData = productsData?.sort((a, b) => b.createdAt - a.createdAt);
         const firstFive = sortedData && sortedData.slice(0, 6);
         setData(firstFive);
-    }, [allProducts]);
+    }, [products]);
     const settings = {
         infinite: true,
         speed: 500,
@@ -56,11 +56,9 @@ const NewArrivals = () => {
             <Slider {...settings}>
                 {data &&
                     data.map((i, index) => (
-                        <>
-                            <div className='px-2'>
-                                <Product data={i} key={index} />
-                            </div>
-                        </>
+                        <div className='px-2' key={index}>
+                            <Product data={i} key={index} />
+                        </div>
                     ))}
             </Slider>
         </div>

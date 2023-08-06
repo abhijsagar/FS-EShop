@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import { addToCart } from '../../../redux/slices/cartSlice';
 import ProductDetailsCard from '../../Route/ProductDetailsCard/ProductDetailsCard';
 
-const Product = ({ data, isEvent }) => {
+const ProductListView = ({ data, isEvent }) => {
     const { wishlist } = useSelector((state) => state.wishlist);
     const { cart } = useSelector((state) => state.cart);
     const [click, setClick] = useState(false);
@@ -56,15 +56,15 @@ const Product = ({ data, isEvent }) => {
     return (
         <div className='w-full relative group'>
             <div className='w-full max-w-60 max-h-60 flex mb-4 border py-2'>
-                <div className='flex justify-start w-[25%] items-center'>
+                <div className='flex justify-start w-[28%] items-center'>
                     <Link to={`${isEvent === true ? `/shop/${data?._id}?isEvent=true` : `/shop/${data?._id}`}`}>
-                        <Image className='w-full h-60' imgSrc={data?.images && data?.images[0]?.url} />
+                        <Image className='w-full pl-4 h-52' imgSrc={data?.images && data?.images[0]?.url} />
                     </Link>
                     <div className='absolute top-6 left-8'>
                         <Badge text='New' />
                     </div>
                 </div>
-                <div className='w-[75%] flex items-center justify-between py-4 lgl:py-0 px-4 lgl:px-0 gap-6 lgl:gap-0'>
+                <div className='w-[72%] flex items-center justify-between py-4 lgl:py-0 px-4 lgl:px-0 gap-6 lgl:gap-0'>
                     <div className='w-full py-4 flex flex-col gap-1 px-4'>
                         <div className='flex flex-col w-full justify-between font-titleFont mt-2'>
                             <p className='text-[#767676] text-[14px]'>{data?.shop.name}</p>
@@ -125,4 +125,4 @@ const Product = ({ data, isEvent }) => {
     );
 };
 
-export default Product;
+export default ProductListView;

@@ -5,6 +5,17 @@ const initialState = {
 };
 
 export const eventReducer = createReducer(initialState, {
+    getAlleventsShopRequest: (state) => {
+        state.isLoading = true;
+    },
+    getAlleventsShopSuccess: (state, action) => {
+        state.isLoading = false;
+        state.events = action.payload;
+    },
+    getAlleventsShopFailed: (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+    },
     getAlleventsRequest: (state) => {
         state.isLoading = true;
     },
@@ -16,7 +27,6 @@ export const eventReducer = createReducer(initialState, {
         state.isLoading = false;
         state.error = action.payload;
     },
-
     clearErrors: (state) => {
         state.error = null;
     },

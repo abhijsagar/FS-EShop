@@ -333,7 +333,7 @@ router.put(
 router.delete(
     '/delete-user/:id',
     isAuthenticated,
-    isAdmin('Admin'),
+    isAdmin('admin'),
     catchAsyncErrors(async (req, res, next) => {
         try {
             const user = await User.findById(req.params.id);

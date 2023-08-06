@@ -4,11 +4,11 @@ import styles from '../../styles/styles';
 import Product from '../home/Products/ProductGridView';
 
 const SuggestedProduct = ({ data }) => {
-    const { allProducts } = useSelector((state) => state.products);
+    const { products } = useSelector((state) => state.products);
     const [productData, setProductData] = useState();
 
     useEffect(() => {
-        const d = allProducts && allProducts.filter((i) => i.category === data.category);
+        const d = products && products?.filter((i) => i.category === data.category);
         setProductData(d);
     }, []);
 

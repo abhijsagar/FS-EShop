@@ -9,7 +9,7 @@ const Offer = () => {
     const { allEvents, isLoading } = useSelector((state) => state.events);
 
     return (
-        <div className='max-w-container mx-auto'>
+        <div className='max-w-container w-[96%] mx-[2%] px-4 lg:mx-auto'>
             <Breadcrumbs title='Best Deals' prevLocation={prevLocation} />
             <div className='pb-10'>
                 {isLoading ? <Loader /> : <div>{allEvents && allEvents.map((item, index) => index < 2 && <OfferCard active={true} data={item} />)}</div>}

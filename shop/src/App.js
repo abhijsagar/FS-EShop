@@ -10,7 +10,7 @@ import {
     ShopAllProducts,
     ShopCreateEvents,
     ShopAllEvents,
-    ShopAllCoupouns,
+    ShopAllCoupons,
     ShopPreviewPage,
     ShopAllOrders,
     ShopOrderDetails,
@@ -19,6 +19,7 @@ import {
     ShopWithDrawMoneyPage,
     ShopInboxPage,
     ShopHomePage,
+    ProductDetailsPage,
 } from './routes/ShopRoutes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,8 +42,9 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<ShopLoginPage />} />
                 <Route path='/shop-create' element={<ShopCreatePage />} />
-                <Route path='/seller/activation/:activation_token' element={<SellerActivationPage />} />
+                <Route path='/product/:id' element={<ProductDetailsPage />} />
                 <Route path='/shop/preview/:id' element={<ShopPreviewPage />} />
+                <Route path='/seller/activation/:activation_token' element={<SellerActivationPage />} />
                 <Route
                     path='/shop/:id'
                     element={
@@ -125,10 +127,10 @@ const App = () => {
                     }
                 />
                 <Route
-                    path='/dashboard-coupouns'
+                    path='/dashboard-coupons'
                     element={
                         <SellerProtectedRoute>
-                            <ShopAllCoupouns />
+                            <ShopAllCoupons />
                         </SellerProtectedRoute>
                     }
                 />

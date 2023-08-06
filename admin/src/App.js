@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
+    HomePage,
     LoginPage,
     SignupPage,
     ActivationPage,
@@ -14,7 +15,7 @@ import {
     AdminDashboardEvents,
     AdminDashboardWithdraw,
     AdminDashboardProfile,
-    HomePage,
+    AdminDashboardCategory,
 } from './routes/AdminRoutes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,6 +24,8 @@ import { loadSeller, loadUser } from './redux/actions/user';
 import ProtectedAdminRoute from './routes/ProtectedAdminRoute';
 import { getAllProducts } from './redux/actions/product';
 import { getAllEvents } from './redux/actions/event';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import ShopPreviewPage from './pages/ShopPreviewPage';
 
 const App = () => {
     useEffect(() => {
@@ -38,6 +41,8 @@ const App = () => {
                 <Route path='/' element={<HomePage />} />
                 <Route path='/admin-login' element={<LoginPage />} />
                 <Route path='/admin-signup' element={<SignupPage />} />
+                <Route path='/product/:id' element={<ProductDetailsPage />} />
+                <Route path='/shop/preview/:id' element={<ShopPreviewPage />} />
                 <Route path='/admin-change-password' element={<ChangePasswordPage />} />
                 <Route path='/activation/:activation_token' element={<ActivationPage />} />
                 <Route
@@ -93,6 +98,14 @@ const App = () => {
                     element={
                         <ProtectedAdminRoute>
                             <AdminDashboardWithdraw />
+                        </ProtectedAdminRoute>
+                    }
+                />
+                <Route
+                    path='/admin-category'
+                    element={
+                        <ProtectedAdminRoute>
+                            <AdminDashboardCategory />
                         </ProtectedAdminRoute>
                     }
                 />

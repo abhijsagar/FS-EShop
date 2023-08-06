@@ -63,7 +63,7 @@ const SignIn = () => {
     }, []);
     return (
         <div className='w-full flex items-center justify-center'>
-            <div className='w-full lgl:w-1/2 h-full'>
+            <div className='w-full lgl:w-1/2 h-full flex items-center justify-center'>
                 {successMsg ? (
                     <div className='w-full lgl:w-[500px] h-full flex flex-col justify-center'>
                         <p className='w-full px-4 py-10 text-green-500 font-medium font-titleFont'>{successMsg}</p>
@@ -74,11 +74,10 @@ const SignIn = () => {
                         </Link>
                     </div>
                 ) : (
-                    <form className='w-full lgl:w-[450px] h-[500px] flex items-center justify-center' onSubmit={handleSubmit}>
+                    <form className='w-full lgl:w-[450px] h-[500px] flex items-center' onSubmit={handleSubmit}>
                         <div className='px-6 py-4 w-full h-[90%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor'>
                             <h1 className='font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4'>Sign in</h1>
                             <div className='flex flex-col gap-3'>
-                                {/* Email */}
                                 <div className='flex flex-col gap-.5'>
                                     <p className='font-titleFont text-base font-semibold text-gray-600'>Work Email</p>
                                     <input

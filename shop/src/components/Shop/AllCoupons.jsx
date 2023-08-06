@@ -14,7 +14,7 @@ const AllCoupons = () => {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [coupouns, setCoupouns] = useState([]);
+    const [coupons, setCoupons] = useState([]);
     const [minAmount, setMinAmout] = useState(null);
     const [maxAmount, setMaxAmount] = useState(null);
     const [selectedProducts, setSelectedProducts] = useState(null);
@@ -32,7 +32,7 @@ const AllCoupons = () => {
             })
             .then((res) => {
                 setIsLoading(false);
-                setCoupouns(res.data.couponCodes);
+                setCoupons(res.data.coupons);
             })
             .catch((error) => {
                 setIsLoading(false);
@@ -107,8 +107,8 @@ const AllCoupons = () => {
 
     const row = [];
 
-    coupouns &&
-        coupouns.forEach((item) => {
+    coupons &&
+        coupons.forEach((item) => {
             row.push({
                 id: item._id,
                 name: item.name,
@@ -136,7 +136,7 @@ const AllCoupons = () => {
                                     <RxCross1 size={30} className='cursor-pointer' onClick={() => setOpen(false)} />
                                 </div>
                                 <h5 className='text-[30px] font-Poppins text-center'>Create Coupon code</h5>
-                                {/* create coupoun code */}
+                                {/* create coupon code */}
                                 <form onSubmit={handleSubmit} aria-required={true}>
                                     <br />
                                     <div>

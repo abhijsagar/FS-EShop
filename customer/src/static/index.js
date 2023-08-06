@@ -71,7 +71,7 @@ export const brandingData = [
 export const categoriesData = [
     {
         id: 1,
-        title: 'Computers and Laptops',
+        title: 'Electronics',
         subCategories: [
             { id: 1, title: 'Laptops' },
             { id: 2, title: 'Laptops Accessories' },
@@ -79,46 +79,36 @@ export const categoriesData = [
     },
     {
         id: 2,
-        title: 'cosmetics and body care',
+        title: 'Clothes',
         subCategories: [],
     },
     {
         id: 3,
-        title: 'Accesories',
+        title: 'Shoes & Apperals',
         subCategories: [],
     },
     {
         id: 4,
-        title: 'Cloths',
+        title: 'Baby & Kids',
         subCategories: [],
     },
     {
         id: 5,
-        title: 'Shoes',
+        title: 'Home & Furniture',
         subCategories: [],
     },
     {
         id: 6,
-        title: 'Gifts',
-        subCategories: [],
-    },
-    {
-        id: 7,
-        title: 'Pet Care',
-        subCategories: [],
-    },
-    {
-        id: 8,
-        title: 'Mobile and Tablets',
-        subCategories: [],
-    },
-    {
-        id: 9,
         title: 'Music and Gaming',
         subCategories: [],
     },
     {
-        id: 10,
+        id: 7,
+        title: 'Beauty & Cream',
+        subCategories: [],
+    },
+    {
+        id: 8,
         title: 'Others',
         subCategories: [],
     },

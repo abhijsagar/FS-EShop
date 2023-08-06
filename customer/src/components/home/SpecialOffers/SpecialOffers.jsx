@@ -6,14 +6,16 @@ import Product from '../Products/ProductGridView';
 
 const SpecialOffers = () => {
     const [data, setData] = useState([]);
-    const { allProducts } = useSelector((state) => state.products);
+    const { products } = useSelector((state) => state.products);
 
     useEffect(() => {
-        const allProductsData = allProducts ? [...allProducts] : [];
-        const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
+        const productsData = products ? [...products] : [];
+        const sortedData = productsData?.sort(
+            (a, b) => (b.originalPrice - b.discountPrice) / b.originalPrice - (a.originalPrice - a.discountPrice) / a.originalPrice
+        );
         const firstFive = sortedData && sortedData.slice(0, 8);
         setData(firstFive);
-    }, [allProducts]);
+    }, [products]);
     return (
         <div className='w-full pb-20'>
             <Heading heading='Special Offers' />

@@ -7,7 +7,7 @@ import SuggestedProduct from '../components/Products/SuggestedProduct';
 import { useSelector } from 'react-redux';
 
 const ProductDetailsPage = () => {
-    const { allProducts } = useSelector((state) => state.products);
+    const { products } = useSelector((state) => state.products);
     const { allEvents } = useSelector((state) => state.events);
     const { id } = useParams();
     const [data, setData] = useState(null);
@@ -19,10 +19,10 @@ const ProductDetailsPage = () => {
             const data = allEvents && allEvents.find((i) => i._id === id);
             setData(data);
         } else {
-            const data = allProducts && allProducts.find((i) => i._id === id);
+            const data = products && products?.find((i) => i._id === id);
             setData(data);
         }
-    }, [allProducts, allEvents]);
+    }, [products, allEvents]);
 
     return (
         <div className='w-full mt-8 mx-auto border-b-[1px] border-b-gray-300'>

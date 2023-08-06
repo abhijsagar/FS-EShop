@@ -24,7 +24,7 @@ const Faq = () => {
     };
 
     return (
-        <div className='max-w-container mx-auto px-4'>
+        <div className='max-w-container lg:mx-auto w-[96%] mx-[2%] px-4'>
             <Breadcrumbs title='FAQ' prevLocation={prevLocation} />
             <div className='pb-10'>
                 <div className='mx-auto space-y-4'>

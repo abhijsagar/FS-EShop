@@ -92,10 +92,10 @@ const SignUp = () => {
     }, []);
 
     return (
-        <div className='w-full flex items-center justify-start'>
-            <div className='w-full lgl:w-[500px] h-full flex flex-col justify-center'>
+        <div className='w-full flex items-center justify-center'>
+            <div className='w-full lgl:w-1/2 h-full flex items-center justify-center'>
                 {successMsg ? (
-                    <div className='w-[500px]'>
+                    <div className='w-full lgl:w-[500px] h-full flex flex-col justify-center'>
                         <p className='w-full px-4 py-10 text-green-500 font-medium font-titleFont'>{successMsg}</p>
                         <Link to='/signin'>
                             <button className='w-full h-10 bg-primeColor rounded-md text-gray-200 text-base font-titleFont font-semibold tracking-wide hover:bg-black hover:text-white duration-300'>
@@ -104,7 +104,7 @@ const SignUp = () => {
                         </Link>
                     </div>
                 ) : (
-                    <form className='w-full lgl:w-[500px] h-[500px] flex items-center justify-center' onSubmit={handleSubmit}>
+                    <form className='w-full lgl:w-[500px] h-[500px] flex items-center' onSubmit={handleSubmit}>
                         <div className='px-6 py-4 w-full flex flex-col justify-start overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor'>
                             <h1 className='font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4'>
                                 Create your account

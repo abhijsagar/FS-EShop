@@ -31,38 +31,38 @@ const ProfileSidebar = ({ setActive, active }) => {
       });
   };
   return (
-      <div className='w-full bg-[#f5f5f3] shadow-sm rounded-[10px] p-4 pt-8'>
+      <div className='w-full p-4 pt-8'>
           <div className='flex items-center cursor-pointer w-full mb-8' onClick={() => setActive(1)}>
               <RxPerson size={28} color={active === 1 ? 'red' : ''} />
-              <span className={`pl-3 ${active === 1 ? 'text-[red]' : ''} 800px:block hidden`}>Profile</span>
+              <span className={`pl-3 ${active === 1 ? 'text-[red]' : ''} md:block hidden`}>Profile</span>
           </div>
           <div className='flex items-center cursor-pointer w-full mb-8' onClick={() => setActive(2)}>
               <HiOutlineShoppingBag size={28} color={active === 2 ? 'red' : ''} />
-              <span className={`pl-3 ${active === 2 ? 'text-[red]' : ''} 800px:block hidden`}>Orders</span>
+              <span className={`pl-3 ${active === 2 ? 'text-[red]' : ''} md:block hidden`}>Orders</span>
           </div>
           <div className='flex items-center cursor-pointer w-full mb-8' onClick={() => setActive(3)}>
               <HiOutlineReceiptRefund size={28} color={active === 3 ? 'red' : ''} />
-              <span className={`pl-3 ${active === 3 ? 'text-[red]' : ''} 800px:block hidden`}>Refunds</span>
+              <span className={`pl-3 ${active === 3 ? 'text-[red]' : ''} md:block hidden`}>Refunds</span>
           </div>
 
           <div className='flex items-center cursor-pointer w-full mb-8' onClick={() => setActive(5)}>
               <MdOutlineTrackChanges size={28} color={active === 5 ? 'red' : ''} />
-              <span className={`pl-3 ${active === 5 ? 'text-[red]' : ''} 800px:block hidden`}>Track Order</span>
+              <span className={`pl-3 ${active === 5 ? 'text-[red]' : ''} md:block hidden`}>Track Order</span>
           </div>
 
           <div className='flex items-center cursor-pointer w-full mb-8' onClick={() => setActive(6)}>
               <RiLockPasswordLine size={28} color={active === 6 ? 'red' : ''} />
-              <span className={`pl-3 ${active === 6 ? 'text-[red]' : ''} 800px:block hidden`}>Change Password</span>
+              <span className={`pl-3 ${active === 6 ? 'text-[red]' : ''} md:block hidden`}>Change Password</span>
           </div>
 
           <div className='flex items-center cursor-pointer w-full mb-8' onClick={() => setActive(7)}>
               <TbAddressBook size={28} color={active === 7 ? 'red' : ''} />
-              <span className={`pl-3 ${active === 7 ? 'text-[red]' : ''} 800px:block hidden`}>Address</span>
+              <span className={`pl-3 ${active === 7 ? 'text-[red]' : ''} md:block hidden`}>Address</span>
           </div>
 
           <div className='single_item flex items-center cursor-pointer w-full mb-8' onClick={logoutHandler}>
               <AiOutlineLogin size={28} color={active === 8 ? 'red' : ''} />
-              <span className={`pl-3 ${active === 8 ? 'text-[red]' : ''} 800px:block hidden`}>Log out</span>
+              <span className={`pl-3 ${active === 8 ? 'text-[red]' : ''} md:block hidden`}>Log out</span>
           </div>
       </div>
   );

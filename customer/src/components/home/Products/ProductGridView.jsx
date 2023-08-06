@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import { addToCart } from '../../../redux/slices/cartSlice';
 import ProductDetailsCard from '../../Route/ProductDetailsCard/ProductDetailsCard';
 
-const Product = ({ data, isEvent }) => {
+const ProductGridView = ({ data, isEvent }) => {
     const { wishlist } = useSelector((state) => state.wishlist);
     const { cart } = useSelector((state) => state.cart);
     const [click, setClick] = useState(false);
@@ -56,8 +56,8 @@ const Product = ({ data, isEvent }) => {
     return (
         <div className='w-full relative group'>
             <div className='max-w-80 max-h-80 relative overflow-y-hidden '>
-                <Link to={`${isEvent === true ? `/shop/${data?._id}?isEvent=true` : `/shop/${data?._id}`}`}>
-                    <Image className='w-full h-full' imgSrc={data?.images && data?.images[0]?.url} />
+                <Link to={`${isEvent === true ? `/shop/${data?._id}?isEvent=true` : `/shop/${data?._id}`}`} className='flex justify-center'>
+                    <Image className='w-80 h-80' imgSrc={data?.images && data?.images[0]?.url} />
                 </Link>
                 <div className='absolute top-6 left-8'>
                     <Badge text='New' />
@@ -127,4 +127,4 @@ const Product = ({ data, isEvent }) => {
     );
 };
 
-export default Product;
+export default ProductGridView;
