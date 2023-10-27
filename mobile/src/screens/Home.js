@@ -33,7 +33,6 @@ function BottomNav() {
 }
 
 const Home = () => {
-    const [selectCategory, setSelectCategory] = React.useState('all');
     const [product, setProduct] = React.useState([]);
 
     const sliderImages = [

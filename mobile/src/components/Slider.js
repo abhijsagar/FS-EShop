@@ -27,15 +27,9 @@ const Slider = ({ sliderImage }) => {
 
   const renderItem = ({ item }) => {
     return (
-      <TouchableOpacity
-        onPress={() => console.log("clicked")}
-        activeOpacity={1}
-      >
-        <Image
-          source={item} // { uri: item }
-          style={styles.sliderImage}
-        />
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => console.log('clicked')} activeOpacity={1}>
+            <Image source={item} style={styles.sliderImage} />
+        </TouchableOpacity>
     );
   };
   return (

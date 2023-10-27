@@ -16,7 +16,6 @@ import { Provider, useSelector } from 'react-redux';
 import { store } from './src/redux/store';
 
 const Stack = createNativeStackNavigator();
-
 const CartHeaderIcons = () => {
     const productCart = useSelector((state) => state.cart);
     const getTotalQuantity = () => {
@@ -90,17 +89,6 @@ function Navigation() {
                         <View style={{ flexDirection: 'row' }}>
                             <Text
                                 style={{
-                                    fontSize: 20,
-                                    fontWeight: 'bold',
-                                    color: '#fff',
-                                    backgroundColor: '#000',
-                                    paddingLeft: 2,
-                                    paddingRight: 2,
-                                }}>
-                                Welcome
-                            </Text>
-                            <Text
-                                style={{
                                     marginLeft: 8,
                                     fontSize: 20,
                                     fontWeight: 'bold',
@@ -130,23 +118,10 @@ function Navigation() {
                                 style={{
                                     fontSize: 20,
                                     fontWeight: 'bold',
-                                    color: '#fff',
-                                    backgroundColor: '#000',
-                                    paddingLeft: 2,
-                                    paddingRight: 2,
-                                }}>
-                                Welcome
-                            </Text>
-                            <Text
-                                style={{
-                                    fontSize: 20,
-                                    fontWeight: 'bold',
                                     color: '#000',
                                     backgroundColor: '#fff',
-                                    // marginHorizontal: 20,
                                 }}>
-                                {' '}
-                                AJOIN{' '}
+                                E-Shop
                             </Text>
                         </View>
                     ),
@@ -184,24 +159,10 @@ function Navigation() {
                                 style={{
                                     fontSize: 20,
                                     fontWeight: 'bold',
-                                    color: '#fff', //#4a06c9
-                                    backgroundColor: '#000',
-                                    paddingLeft: 2,
-                                    paddingRight: 2,
-                                    // marginHorizontal: 20,
-                                }}>
-                                Welcome
-                            </Text>
-                            <Text
-                                style={{
-                                    fontSize: 20,
-                                    fontWeight: 'bold',
                                     color: '#000',
                                     backgroundColor: '#fff',
-                                    // marginHorizontal: 20,
                                 }}>
-                                {' '}
-                                AJOIN{' '}
+                                E-Shop
                             </Text>
                         </View>
                     ),
@@ -225,24 +186,10 @@ function Navigation() {
                                 style={{
                                     fontSize: 20,
                                     fontWeight: 'bold',
-                                    color: '#fff', //#4a06c9
-                                    backgroundColor: '#000',
-                                    paddingLeft: 2,
-                                    paddingRight: 2,
-                                    // marginHorizontal: 20,
-                                }}>
-                                Your
-                            </Text>
-                            <Text
-                                style={{
-                                    fontSize: 20,
-                                    fontWeight: 'bold',
                                     color: '#000',
                                     backgroundColor: '#fff',
-                                    // marginHorizontal: 20,
                                 }}>
-                                {' '}
-                                Cart{' '}
+                                E-Shop
                             </Text>
                         </View>
                     ),
@@ -265,24 +212,10 @@ function Navigation() {
                                 style={{
                                     fontSize: 20,
                                     fontWeight: 'bold',
-                                    color: '#fff', //#4a06c9
-                                    backgroundColor: '#000',
-                                    paddingLeft: 2,
-                                    paddingRight: 2,
-                                    // marginHorizontal: 20,
-                                }}>
-                                Welcome
-                            </Text>
-                            <Text
-                                style={{
-                                    fontSize: 20,
-                                    fontWeight: 'bold',
                                     color: '#000',
                                     backgroundColor: '#fff',
-                                    // marginHorizontal: 20,
                                 }}>
-                                {' '}
-                                AJOIN{' '}
+                                E-Shop
                             </Text>
                         </View>
                     ),
